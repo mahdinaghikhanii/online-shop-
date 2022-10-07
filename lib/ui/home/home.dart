@@ -27,7 +27,42 @@ class HomeScrean extends StatelessWidget {
                 itemBuilder: (context, index) {
                   switch (index) {
                     case 0:
-                      return Container();
+                      return Padding(
+                        padding:
+                            const EdgeInsets.only(left: 16, right: 16, top: 5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              children: [
+                                Text(
+                                  "ZIMRO",
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(letterSpacing: 5, fontSize: 25),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: 16),
+                            Text(
+                              "Welcome",
+                              style: Theme.of(context).textTheme.titleMedium,
+                            ),
+                            Text(
+                              "zimro store!",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge!
+                                  .copyWith(
+                                      fontWeight: FontWeight.bold,
+                                      color: Colors.white,
+                                      fontSize: 24,
+                                      wordSpacing: 2),
+                            ),
+                          ],
+                        ),
+                      );
 
                     case 1:
                       return Container();

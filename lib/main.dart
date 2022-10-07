@@ -19,8 +19,13 @@ class MyApp extends StatelessWidget {
       title: 'Onlin shop',
       theme: ThemeData(
           scaffoldBackgroundColor: LightThemeColors.scafoldBackgroundColro,
-          textTheme: GoogleFonts.poppinsTextTheme(const TextTheme(
-              titleLarge: TextStyle(fontWeight: FontWeight.bold))),
+          textTheme: GoogleFonts.poppinsTextTheme(
+            const TextTheme(
+                titleLarge: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: LightThemeColors.titleTextColor),
+                titleMedium: TextStyle(color: Colors.white)),
+          ),
           colorScheme: const ColorScheme.light(
             primary: LightThemeColors.primariColor,
           )),
