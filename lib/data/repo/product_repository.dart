@@ -1,5 +1,9 @@
+import 'package:online_shop/common/http_client.dart';
 import 'package:online_shop/data/entity/product.dart';
 import 'package:online_shop/data/source/product_data_source.dart';
+
+final productRepository =
+    ProductRepository(ProdcutRemoteDataSource(httpClients));
 
 abstract class IProductRepository {
   Future<List<ProductEntity>> getAllProdcut();

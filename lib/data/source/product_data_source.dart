@@ -21,12 +21,10 @@ class ProdcutRemoteDataSource
   Future<List<ProductEntity>> getAllProduct() async {
     final respone = await httpClient.get("products");
     validateRespone(respone);
-
     List<ProductEntity> products = [];
-
-    (respone.data as List).forEach((element) {
+    for (var element in (respone.data as List)) {
       products.add(ProductEntity.fromJson(element));
-    });
+    }
     return products;
   }
 }
