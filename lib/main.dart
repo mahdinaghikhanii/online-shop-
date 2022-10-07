@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/common/http_client.dart';
+import 'package:online_shop/data/source/product_data_source.dart';
 import 'ui/home/home.dart';
 
 void main() {
@@ -10,6 +12,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ProdcutRemoteDataSource(httpClients).getAllProduct().then((value) {
+      debugPrint(value.toString());
+    });
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Onlin shop',

@@ -1,7 +1,7 @@
 class ProductEntity {
   final int id;
   final String title;
-  final String price;
+  final double price;
   final String description;
   final String category;
   final String image;
@@ -10,18 +10,18 @@ class ProductEntity {
   ProductEntity.fromJson(Map<String, dynamic> json)
       : id = json['id'],
         title = json['title'],
-        price = json['price'],
+        price = json['price'] == null ? 0.0 : json['price'].toDouble(),
         description = json['description'],
         category = json['category'],
         image = json['image'],
-        ratingEntity = json['rating'];
+        ratingEntity = RatingEntity.formJson(json["rating"]);
 }
 
 class RatingEntity {
-  final String rate;
-  final String count;
+  final double rate;
+  final int count;
 
   RatingEntity.formJson(Map<String, dynamic> json)
-      : rate = json['rate'],
+      : rate = json['rate'].toDouble(),
         count = json['count'];
 }
