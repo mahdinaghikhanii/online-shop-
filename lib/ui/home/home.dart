@@ -93,7 +93,10 @@ class HomeScrean extends StatelessWidget {
                 });
           } else if (state is HomeError) {
             return Center(
-              child: Text(state.exception.exceptionMessage),
+              child: Text(
+                state.exception.exceptionMessage,
+                style: Theme.of(context).textTheme.titleLarge,
+              ),
             );
           } else {
             throw "bad State";
