@@ -19,7 +19,7 @@ class ImageLoadingService extends StatelessWidget {
     } else {
       return CachedNetworkImage(
         imageUrl: imageUrl,
-        fit: BoxFit.cover,
+        fit: BoxFit.contain,
       );
     }
   }

@@ -7,6 +7,7 @@ import 'package:online_shop/data/repo/product_category_repository.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
 import '../../data/repo/product_repository.dart';
 
+import '../widgets/horizontal_listview.dart';
 import 'bloc/home_bloc.dart';
 import '../widgets/slider.dart';
 
@@ -80,6 +81,34 @@ class HomeScrean extends StatelessWidget {
 
                     case 2:
                       return _ListChoiceChip(state.category);
+
+                    case 3:
+                      return Column(
+                        children: [
+                          const SizedBox(height: 24),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("All collection",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleMedium),
+                                Row(
+                                  children: const [
+                                    Text("See all"),
+                                    SizedBox(width: 4),
+                                    Icon(Icons.arrow_forward_ios,
+                                        size: 12, color: Colors.white)
+                                  ],
+                                )
+                              ],
+                            ),
+                          ),
+                          HorizontalListView(productEntity: state.product)
+                        ],
+                      );
                     default:
                       return Container();
                   }
