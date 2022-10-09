@@ -10,3 +10,8 @@ abstract class HomeEvent extends Equatable {
 class HomeStarted extends HomeEvent {}
 
 class HomeRefresh extends HomeEvent {}
+
+class HomeChoiceChipClicked extends HomeEvent {
+  final int selectChoiceChip;
+  const HomeChoiceChipClicked(this.selectChoiceChip);
+}

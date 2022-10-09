@@ -10,7 +10,7 @@ abstract class IProdcutRemoteDataSource {
 class ProdcutRemoteDataSource
     with HttpValidateRespone
     implements IProdcutRemoteDataSource {
-  final Dio httpClient;
+  Dio httpClient;
   ProdcutRemoteDataSource(this.httpClient);
   @override
   Future<List<ProductEntity>> getASingleProdcut(int numberId) {

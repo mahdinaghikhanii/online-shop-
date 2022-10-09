@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: LightThemeColors.scafoldBackgroundColro,
           textTheme: GoogleFonts.poppinsTextTheme(
             const TextTheme(
+                bodyMedium: TextStyle(color: Colors.white),
                 titleLarge: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: LightThemeColors.titleTextColor),
