@@ -1,5 +1,5 @@
-class Category {
+class CategoryEntity {
   final String categoryName;
 
-  Category(this.categoryName);
+  CategoryEntity(this.categoryName);
 }

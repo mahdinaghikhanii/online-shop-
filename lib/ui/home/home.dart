@@ -1,24 +1,26 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/data/repo/product_repository.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/ui/widgets/empty_state.dart';
+import '../../data/repo/product_repository.dart';
 
-import 'package:online_shop/ui/home/bloc/product_bloc.dart';
-import 'package:online_shop/ui/widgets/slider.dart';
+import 'bloc/home_bloc.dart';
+import '../widgets/slider.dart';
 
 class HomeScrean extends StatelessWidget {
   const HomeScrean({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<ProductBloc>(
+    return BlocProvider<HomeBloc>(
       create: (context) {
-        final bloc = ProductBloc(productRepository);
+        final bloc = HomeBloc(productRepository);
         bloc.add(HomeStarted());
         return bloc;
       },
       child: Scaffold(
-        body: BlocBuilder<ProductBloc, HomeState>(builder: ((context, state) {
+        body: BlocBuilder<HomeBloc, HomeState>(builder: ((context, state) {
           if (state is HomeLoading) {
             return const Center(
               child: CupertinoActivityIndicator(
@@ -93,10 +95,26 @@ class HomeScrean extends StatelessWidget {
                 });
           } else if (state is HomeError) {
             return Center(
-              child: Text(
-                state.exception.exceptionMessage,
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
+              child: EmptyState(
+                  image: SvgPicture.asset(
+                    "assets/svg/no_data.svg",
+                    width: 200,
+                  ),
+                  text: state.exception.exceptionMessage,
+                  buttonClicked: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all(Colors.white)),
+                      onPressed: () {
+                        BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
+                      },
+                      child: Text(
+                        "Refresh",
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleMedium!
+                            .copyWith(color: Colors.black),
+                      ))),
             );
           } else {
             throw "bad State";

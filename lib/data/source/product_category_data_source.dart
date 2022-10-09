@@ -1,8 +1,8 @@
 import 'package:dio/dio.dart';
-import 'package:flutter/foundation.dart';
+import 'package:online_shop/data/entity/category.dart';
 
 abstract class IRemoteProductCategoryDataSource {
-  Future<List<Category>> getAllProductCategory();
+  Future<List<CategoryEntity>> getAllProductCategory();
 }
 
 class RemoteProductCategoryDataSource
@@ -12,14 +12,14 @@ class RemoteProductCategoryDataSource
   RemoteProductCategoryDataSource(this.httpClient);
 
   @override
-  Future<List<Category>> getAllProductCategory() async {
+  Future<List<CategoryEntity>> getAllProductCategory() async {
     final respone = await httpClient.get("products/categories");
 
-    List<Category> category = [];
+    List<CategoryEntity> category = [];
 
-    (respone.data as List).forEach((data) {
-      category.add(data);
-    });
+    for (var data in (respone.data as List)) {
+      category.add(CategoryEntity(data));
+    }
 
     return category;
   }
