@@ -8,8 +8,8 @@ class BannerSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: AspectRatio(
-        aspectRatio: 2.2,
+      child: SizedBox(
+        height: 180,
         child: Stack(
           children: [
             PageView.builder(

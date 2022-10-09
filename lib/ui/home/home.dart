@@ -2,17 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop/data/repo/product_repository.dart';
-import 'package:online_shop/theme.dart';
+
 import 'package:online_shop/ui/home/bloc/product_bloc.dart';
 import 'package:online_shop/ui/widgets/slider.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScrean extends StatelessWidget {
   const HomeScrean({super.key});
 
   @override
   Widget build(BuildContext context) {
-    PageController controller = PageController();
     return BlocProvider<ProductBloc>(
       create: (context) {
         final bloc = ProductBloc(productRepository);
@@ -23,7 +21,9 @@ class HomeScrean extends StatelessWidget {
         body: BlocBuilder<ProductBloc, HomeState>(builder: ((context, state) {
           if (state is HomeLoading) {
             return const Center(
-              child: CupertinoActivityIndicator(),
+              child: CupertinoActivityIndicator(
+                color: Colors.white,
+              ),
             );
           } else if (state is HomeSuccess) {
             return ListView.builder(
@@ -73,6 +73,20 @@ class HomeScrean extends StatelessWidget {
                           height: 180,
                           width: MediaQuery.of(context).size.width,
                           child: BannerSlider());
+
+                    case 2:
+                      return SizedBox(
+                        height: 50,
+                        child: ListView.builder(
+                            itemCount: 4,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) {
+                              return ChoiceChip(
+                                label: Text("text"),
+                                selected: false,
+                              );
+                            }),
+                      );
                     default:
                       return Container();
                   }
