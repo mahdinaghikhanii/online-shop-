@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_shop/data/entity/product.dart';
-import 'package:online_shop/ui/widgets/image.dart';
-import 'package:online_shop/common/utils.dart';
+import '../../data/entity/product.dart';
+import 'image.dart';
+import '../../common/utils.dart';
 
 class HorizontalListView extends StatelessWidget {
   final List<ProductEntity> productEntity;

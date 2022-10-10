@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:online_shop/data/entity/category.dart';
-import 'package:online_shop/ui/callaction/callaction.dart';
+import '../../data/entity/category.dart';
+import '../callaction/callaction.dart';
 
 class ListChoiceChip extends StatefulWidget {
   final List<CategoryEntity> categoryEntity;

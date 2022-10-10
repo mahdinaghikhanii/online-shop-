@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/common/utils.dart';
-import 'package:online_shop/data/entity/product.dart';
-import 'package:online_shop/ui/product/details..dart';
-import 'package:online_shop/ui/widgets/image.dart';
+import '../../common/utils.dart';
+import '../../data/entity/product.dart';
+import '../product/details..dart';
+import 'image.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
 

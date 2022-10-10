@@ -1,6 +1,38 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:online_shop/common/utils.dart';
+// ignore_for_file: file_names
+
+import 'package:flutter/material.dart'
+    show
+        BorderRadius,
+        BoxDecoration,
+        BuildContext,
+        Colors,
+        Column,
+        Container,
+        CustomScrollView,
+        EdgeInsets,
+        Expanded,
+        FloatingActionButton,
+        FloatingActionButtonLocation,
+        Icon,
+        IconButton,
+        Icons,
+        MainAxisAlignment,
+        MediaQuery,
+        Navigator,
+        Padding,
+        Radius,
+        Row,
+        SafeArea,
+        Scaffold,
+        SizedBox,
+        SliverAppBar,
+        SliverToBoxAdapter,
+        StatelessWidget,
+        Text,
+        TextStyle,
+        Theme,
+        Widget;
+import '../../common/utils.dart';
 import 'package:online_shop/data/entity/product.dart';
 import 'package:online_shop/ui/widgets/image.dart';
 
@@ -101,7 +133,10 @@ class ProductDetailsScren extends StatelessWidget {
                             style: Theme.of(context)
                                 .textTheme
                                 .bodyLarge!
-                                .copyWith(height: 1.6, wordSpacing: 1.4),
+                                .copyWith(
+                                    height: 1.7,
+                                    wordSpacing: 1.4,
+                                    fontSize: 16),
                           ),
                         ),
                       ],

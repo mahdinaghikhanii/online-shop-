@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:online_shop/data/repo/product_repository.dart';
-import 'package:online_shop/ui/callaction/bloc/callaction_bloc.dart';
-import 'package:online_shop/ui/widgets/empty_state.dart';
-import 'package:online_shop/ui/widgets/loading_state.dart';
-import 'package:online_shop/ui/widgets/staggered_gridview.dart';
+import '../../data/repo/product_repository.dart';
+import 'bloc/callaction_bloc.dart';
+import '../widgets/empty_state.dart';
+import '../widgets/loading_state.dart';
+import '../widgets/staggered_gridview.dart';
 
 class AllCallactionScren extends StatelessWidget {
   /// 1  get a single product with category
