@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_shop/ui/cart/cart.dart';
 
 import 'home/home.dart';
 
@@ -54,7 +55,7 @@ class _RootScreanState extends State<RootScrean> {
             index: selectedScreenIndex,
             children: [
               _navigator(_homeKey, homeIndex, const HomeScrean()),
-              _navigator(_cartKey, cartIndex, const Text("cart")),
+              _navigator(_cartKey, cartIndex, const CartScren()),
               _navigator(
                   _profileKey,
                   profileIndex,

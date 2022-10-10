@@ -31,8 +31,8 @@ class MyApp extends StatelessWidget {
                 titleMedium: TextStyle(color: Colors.white)),
           ),
           colorScheme: const ColorScheme.light(
-            primary: LightThemeColors.primariColor,
-          )),
+              primary: LightThemeColors.primariColor,
+              onPrimary: LightThemeColors.scafoldBackgroundColro)),
       home: const RootScrean(),
     );
   }

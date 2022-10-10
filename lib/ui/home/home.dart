@@ -99,7 +99,12 @@ class HomeScrean extends StatelessWidget {
                                 productEntity: state.allproduct));
                       case 4:
                         return LargeTitle(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => AllCallactionScren(
+                                      selectedCategoryOrAllProduct:
+                                          ProdcutSort().womensclothing)));
+                            },
                             firstTitle: "New women's clothing",
                             secoundTitle: "See all",
                             item: HorizontalListView(

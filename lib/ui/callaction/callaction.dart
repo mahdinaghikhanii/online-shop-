@@ -6,7 +6,6 @@ import 'package:online_shop/ui/callaction/bloc/callaction_bloc.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
 import 'package:online_shop/ui/widgets/loading_state.dart';
 import 'package:online_shop/ui/widgets/staggered_gridview.dart';
-import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 
 class AllCallactionScren extends StatelessWidget {
   /// 1  get a single product with category
