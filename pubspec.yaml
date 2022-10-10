@@ -45,6 +45,10 @@ dependencies:
   flutter_svg: ^1.1.5
   cached_network_image: ^3.2.1
   staggered_grid_view_flutter: ^0.0.4
+  flutter_native_splash: ^2.2.11
+
+
+ 
 
 dev_dependencies:
   flutter_test:
@@ -56,6 +60,14 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+
+flutter_native_splash:
+  android: true
+  ios: true
+  web: true
+  color: "#FAFAFA"
+  image: assets/img/logo.png
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

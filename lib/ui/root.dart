@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'cart/cart.dart';
 
 import 'home/home.dart';
@@ -48,6 +49,7 @@ class _RootScreanState extends State<RootScrean> {
 
   @override
   Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
