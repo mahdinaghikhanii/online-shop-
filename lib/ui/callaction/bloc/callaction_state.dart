@@ -9,15 +9,22 @@ abstract class CallactionState extends Equatable {
 
 class CallactionLoading extends CallactionState {}
 
-class CallactionSuccess extends CallactionState {
-  final List<ProductEntity> allproduct;
+class CallactionSingleProductSuccess extends CallactionState {
   final List<ProductEntity> singleProduct;
 
-  const CallactionSuccess(
-      {required this.allproduct, required this.singleProduct});
+  const CallactionSingleProductSuccess({required this.singleProduct});
 
   @override
-  List<Object> get props => [allproduct, singleProduct];
+  List<Object> get props => [singleProduct];
+}
+
+class CallactionAllProductSuccess extends CallactionState {
+  final List<ProductEntity> allProducts;
+
+  const CallactionAllProductSuccess({required this.allProducts});
+
+  @override
+  List<Object> get props => [allProducts];
 }
 
 class CallactionError extends CallactionState {

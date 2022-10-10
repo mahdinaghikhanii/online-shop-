@@ -18,6 +18,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Onlin shop',
       theme: ThemeData(
+          appBarTheme: const AppBarTheme(
+            backgroundColor: LightThemeColors.scafoldBackgroundColro,
+          ),
           scaffoldBackgroundColor: LightThemeColors.scafoldBackgroundColro,
           textTheme: GoogleFonts.poppinsTextTheme(
             const TextTheme(
