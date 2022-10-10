@@ -5,6 +5,8 @@ import 'package:online_shop/data/repo/product_repository.dart';
 import 'package:online_shop/ui/callaction/bloc/callaction_bloc.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
 import 'package:online_shop/ui/widgets/loading_state.dart';
+import 'package:online_shop/ui/widgets/staggered_gridview.dart';
+import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 
 class AllCallactionScren extends StatelessWidget {
   /// 1  get a single product with category
@@ -24,6 +26,7 @@ class AllCallactionScren extends StatelessWidget {
       }),
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           centerTitle: false,
           automaticallyImplyLeading: false,
           titleSpacing: 16,
@@ -60,12 +63,13 @@ class AllCallactionScren extends StatelessWidget {
                               .copyWith(color: Colors.black),
                         ))),
               );
-            } else if (state is CallactionAllProductSuccess ||
-                state is CallactionSingleProductSuccess) {
-              return Container(
-                color: Colors.amber,
-                width: 200,
-                height: 300,
+            } else if (state is CallactionAllProductSuccess) {
+              final allproducts = state.allProducts;
+              return StaggeredGridViewsWidgets(products: allproducts);
+            } else if (state is CallactionSingleProductSuccess) {
+              final singleProduct = state.singleProduct;
+              return StaggeredGridViewsWidgets(
+                products: singleProduct,
               );
             } else {
               throw "bad state";
