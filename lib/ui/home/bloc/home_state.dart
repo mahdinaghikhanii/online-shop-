@@ -10,13 +10,17 @@ abstract class HomeState extends Equatable {
 class HomeLoading extends HomeState {}
 
 class HomeSuccess extends HomeState {
-  final List<ProductEntity> product;
+  final List<ProductEntity> allproduct;
+  final List<ProductEntity> singleProduct;
   final List<CategoryEntity> category;
 
-  const HomeSuccess({required this.product, required this.category});
+  const HomeSuccess(
+      {required this.allproduct,
+      required this.singleProduct,
+      required this.category});
 
   @override
-  List<Object> get props => [product, category];
+  List<Object> get props => [allproduct, category, singleProduct];
 }
 
 class HomeError extends HomeState {

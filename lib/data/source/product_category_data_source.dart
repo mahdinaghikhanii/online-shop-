@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:online_shop/data/common/http_validate_respone.dart';
 import 'package:online_shop/data/entity/category.dart';
 
 abstract class IRemoteProductCategoryDataSource {
@@ -6,6 +7,7 @@ abstract class IRemoteProductCategoryDataSource {
 }
 
 class RemoteProductCategoryDataSource
+    with HttpValidateRespone
     implements IRemoteProductCategoryDataSource {
   final Dio httpClient;
 
@@ -14,6 +16,7 @@ class RemoteProductCategoryDataSource
   @override
   Future<List<CategoryEntity>> getAllProductCategory() async {
     final respone = await httpClient.get("products/categories");
+    validateRespone(respone);
 
     List<CategoryEntity> category = [];
 

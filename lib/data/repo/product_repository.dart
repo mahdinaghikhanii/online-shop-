@@ -7,15 +7,15 @@ final productRepository =
 
 abstract class IProductRepository {
   Future<List<ProductEntity>> getAllProdcut();
-  Future<List<ProductEntity>> getASingleProdcut(int numberId);
+  Future<List<ProductEntity>> getASingleProdcut(String category);
 }
 
 class ProductRepository implements IProductRepository {
   IProdcutRemoteDataSource prodcutRemoteDataSource;
   ProductRepository(this.prodcutRemoteDataSource);
   @override
-  Future<List<ProductEntity>> getASingleProdcut(int numberId) {
-    throw UnimplementedError();
+  Future<List<ProductEntity>> getASingleProdcut(String category) async {
+    return prodcutRemoteDataSource.getASingleProdcut(category);
   }
 
   @override

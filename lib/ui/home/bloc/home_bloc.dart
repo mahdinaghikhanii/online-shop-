@@ -1,7 +1,4 @@
-import 'dart:math';
-
 import 'package:equatable/equatable.dart';
-import 'package:flutter/foundation.dart';
 
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop/data/entity/category.dart';
@@ -15,19 +12,26 @@ part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  IProductRepository productRepository;
+  IProductRepository allproductRepository;
+  IProductRepository singleProductRepository;
   IProductCateGoryRepository iProductCateGoryRepository;
 
-  HomeBloc(this.productRepository, this.iProductCateGoryRepository)
+  HomeBloc(this.allproductRepository, this.singleProductRepository,
+      this.iProductCateGoryRepository)
       : super((HomeLoading())) {
     on<HomeEvent>((event, emit) async {
       if (event is HomeStarted || event is HomeRefresh) {
         try {
           emit(HomeLoading());
-          final product = await productRepository.getAllProdcut();
+          final allProduct = await productRepository.getAllProdcut();
+          final singleProduct =
+              await productRepository.getASingleProdcut("women's clothing");
           final category =
               await iProductCateGoryRepository.getAllProductCategory();
-          emit(HomeSuccess(product: product, category: category));
+          emit(HomeSuccess(
+              allproduct: allProduct,
+              category: category,
+              singleProduct: singleProduct));
           if (event is HomeChoiceChipClicked) {
             final select = event.selectChoiceChip;
           }

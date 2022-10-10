@@ -4,7 +4,7 @@ import '../entity/product.dart';
 
 abstract class IProdcutRemoteDataSource {
   Future<List<ProductEntity>> getAllProduct();
-  Future<List<ProductEntity>> getASingleProdcut(int numberId);
+  Future<List<ProductEntity>> getASingleProdcut(String category);
 }
 
 class ProdcutRemoteDataSource
@@ -13,8 +13,15 @@ class ProdcutRemoteDataSource
   Dio httpClient;
   ProdcutRemoteDataSource(this.httpClient);
   @override
-  Future<List<ProductEntity>> getASingleProdcut(int numberId) {
-    throw UnimplementedError();
+  Future<List<ProductEntity>> getASingleProdcut(String category) async {
+    final respone = await httpClient
+        .get("https://fakestoreapi.com/products/category/$category");
+    validateRespone(respone);
+    List<ProductEntity> singleProduct = [];
+    for (var data in (respone.data as List)) {
+      singleProduct.add(ProductEntity.fromJson(data));
+    }
+    return singleProduct;
   }
 
   @override

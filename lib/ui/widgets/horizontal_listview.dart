@@ -34,12 +34,20 @@ class HorizontalListView extends StatelessWidget {
                             imageUrl: productEntity[index].image),
                       ),
                       Positioned(
-                          left: 40,
+                          left: 60,
                           right: 0,
                           top: 0,
                           child: IconButton(
                               onPressed: () {},
-                              icon: const Icon(Icons.favorite_border)))
+                              icon: const Icon(Icons.favorite_border))),
+                      Positioned(
+                          left: 60,
+                          right: 0,
+                          bottom: 0,
+                          child: IconButton(
+                              color: Theme.of(context).colorScheme.primary,
+                              onPressed: () {},
+                              icon: const Icon(Icons.card_travel))),
                     ],
                   ),
                   const SizedBox(height: 12),
