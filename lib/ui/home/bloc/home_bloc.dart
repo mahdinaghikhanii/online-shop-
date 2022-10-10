@@ -33,7 +33,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
               category: category,
               singleProduct: singleProduct));
           if (event is HomeChoiceChipClicked) {
-            final select = event.selectChoiceChip;
+            //  final select = event.selectChoiceChip;
           }
         } catch (e) {
           emit(HomeError(AppException()));

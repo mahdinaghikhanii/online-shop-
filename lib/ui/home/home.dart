@@ -2,10 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/data/entity/product.dart';
+
 import 'package:online_shop/data/repo/product_category_repository.dart';
+import 'package:online_shop/ui/callaction/callaction.dart';
 import 'package:online_shop/ui/widgets/choice_chip.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
 import 'package:online_shop/ui/widgets/large_title.dart';
+import 'package:online_shop/ui/widgets/loading_state.dart';
 import '../../data/repo/product_repository.dart';
 
 import '../widgets/horizontal_listview.dart';
@@ -27,11 +31,7 @@ class HomeScrean extends StatelessWidget {
       child: Scaffold(
         body: BlocBuilder<HomeBloc, HomeState>(builder: ((context, state) {
           if (state is HomeLoading) {
-            return const Center(
-              child: CupertinoActivityIndicator(
-                color: Colors.white,
-              ),
-            );
+            return const LoadingState();
           } else if (state is HomeSuccess) {
             return SafeArea(
               child: ListView.builder(
@@ -90,10 +90,17 @@ class HomeScrean extends StatelessWidget {
                         return LargeTitle(
                             firstTitle: "All callection",
                             secoundTitle: "See all",
+                            onPressed: () {
+                              Navigator.of(context).push(MaterialPageRoute(
+                                  builder: (context) => AllCallactionScren(
+                                      selectedCategoryOrAllProduct:
+                                          ProdcutSort().allProduct)));
+                            },
                             item: HorizontalListView(
                                 productEntity: state.allproduct));
                       case 4:
                         return LargeTitle(
+                            onPressed: () {},
                             firstTitle: "New women's clothing",
                             secoundTitle: "See all",
                             item: HorizontalListView(

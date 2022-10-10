@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:online_shop/data/entity/category.dart';
+import 'package:online_shop/ui/callaction/callaction.dart';
 
 class ListChoiceChip extends StatefulWidget {
   final List<CategoryEntity> categoryEntity;
@@ -29,6 +30,12 @@ class ListChoiceChipState extends State<ListChoiceChip> {
                 selectedColor: const Color(0xFF979797),
                 padding: const EdgeInsets.all(2),
                 onSelected: (value) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AllCallactionScren(
+                              selectedCategoryOrAllProduct:
+                                  widget.categoryEntity[index].categoryName)));
                   setState(() {
                     selectChip = index;
                   });

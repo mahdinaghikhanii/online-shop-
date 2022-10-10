@@ -26,7 +26,7 @@ class ProdcutRemoteDataSource
 
   @override
   Future<List<ProductEntity>> getAllProduct() async {
-    final respone = await httpClient.get("products");
+    final respone = await httpClient.get(ProdcutSort().allProduct);
     validateRespone(respone);
     List<ProductEntity> products = [];
     for (var element in (respone.data as List)) {

@@ -4,10 +4,12 @@ class LargeTitle extends StatelessWidget {
   final String firstTitle;
   final String secoundTitle;
   final Widget item;
+  final Function() onPressed;
   const LargeTitle(
       {super.key,
       required this.firstTitle,
       required this.secoundTitle,
+      required this.onPressed,
       required this.item});
 
   @override
@@ -20,14 +22,16 @@ class LargeTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(firstTitle, style: Theme.of(context).textTheme.titleMedium),
-            Row(
-              children: [
-                Text(secoundTitle),
-                const SizedBox(width: 4),
-                const Icon(Icons.arrow_forward_ios,
-                    size: 12, color: Colors.white)
-              ],
-            )
+            TextButton(
+                onPressed: onPressed,
+                child: Row(
+                  children: [
+                    Text(secoundTitle),
+                    const SizedBox(width: 4),
+                    const Icon(Icons.arrow_forward_ios,
+                        size: 12, color: Colors.white)
+                  ],
+                ))
           ],
         ),
       ),

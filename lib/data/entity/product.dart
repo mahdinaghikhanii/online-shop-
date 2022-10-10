@@ -1,3 +1,11 @@
+class ProdcutSort {
+  final String electronics = "electronics";
+  final String jewelery = "jewelery";
+  final String mensclothing = "men's clothing";
+  final String womensclothing = "women's clothing";
+  final String allProduct = "products";
+}
+
 class ProductEntity {
   final int id;
   final String title;
