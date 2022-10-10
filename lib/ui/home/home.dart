@@ -5,7 +5,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:online_shop/data/repo/product_category_repository.dart';
 import 'package:online_shop/ui/widgets/choice_chip.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
-import 'package:online_shop/ui/widgets/image.dart';
 import 'package:online_shop/ui/widgets/large_title.dart';
 import '../../data/repo/product_repository.dart';
 
@@ -34,73 +33,76 @@ class HomeScrean extends StatelessWidget {
               ),
             );
           } else if (state is HomeSuccess) {
-            return ListView.builder(
-                itemCount: 7,
-                itemBuilder: (context, index) {
-                  switch (index) {
-                    case 0:
-                      return Padding(
-                        padding:
-                            const EdgeInsets.only(left: 16, right: 16, top: 5),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              children: [
-                                Text(
-                                  "ZIMRO",
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleLarge!
-                                      .copyWith(letterSpacing: 5, fontSize: 25),
-                                ),
-                              ],
-                            ),
-                            const SizedBox(height: 16),
-                            Text(
-                              "Welcome",
-                              style: Theme.of(context).textTheme.titleMedium,
-                            ),
-                            Text(
-                              "zimro store!",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .titleLarge!
-                                  .copyWith(
-                                      fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                      fontSize: 24,
-                                      wordSpacing: 2),
-                            ),
-                          ],
-                        ),
-                      );
+            return SafeArea(
+              child: ListView.builder(
+                  itemCount: 7,
+                  itemBuilder: (context, index) {
+                    switch (index) {
+                      case 0:
+                        return Padding(
+                          padding: const EdgeInsets.only(
+                              left: 16, right: 16, top: 5),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "ZIMRO",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .titleLarge!
+                                        .copyWith(
+                                            letterSpacing: 5, fontSize: 25),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 16),
+                              Text(
+                                "Welcome",
+                                style: Theme.of(context).textTheme.titleMedium,
+                              ),
+                              Text(
+                                "zimro store!",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .titleLarge!
+                                    .copyWith(
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                        fontSize: 24,
+                                        wordSpacing: 2),
+                              ),
+                            ],
+                          ),
+                        );
 
-                    case 1:
-                      return SizedBox(
-                          height: 180,
-                          width: MediaQuery.of(context).size.width,
-                          child: BannerSlider());
+                      case 1:
+                        return SizedBox(
+                            height: 180,
+                            width: MediaQuery.of(context).size.width,
+                            child: BannerSlider());
 
-                    case 2:
-                      return ListChoiceChip(state.category);
+                      case 2:
+                        return ListChoiceChip(state.category);
 
-                    case 3:
-                      return LargeTitle(
-                          firstTitle: "All callection",
-                          secoundTitle: "See all",
-                          item: HorizontalListView(
-                              productEntity: state.allproduct));
-                    case 4:
-                      return LargeTitle(
-                          firstTitle: "New women's clothing",
-                          secoundTitle: "See all",
-                          item: HorizontalListView(
-                              productEntity: state.singleProduct));
-                    default:
-                      return Container();
-                  }
-                });
+                      case 3:
+                        return LargeTitle(
+                            firstTitle: "All callection",
+                            secoundTitle: "See all",
+                            item: HorizontalListView(
+                                productEntity: state.allproduct));
+                      case 4:
+                        return LargeTitle(
+                            firstTitle: "New women's clothing",
+                            secoundTitle: "See all",
+                            item: HorizontalListView(
+                                productEntity: state.singleProduct));
+                      default:
+                        return Container();
+                    }
+                  }),
+            );
           } else if (state is HomeError) {
             return Center(
               child: EmptyState(

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:online_shop/ui/root.dart';
 
 import 'theme.dart';
-
-import 'ui/home/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
           colorScheme: const ColorScheme.light(
             primary: LightThemeColors.primariColor,
           )),
-      home: const HomeScrean(),
+      home: const RootScrean(),
     );
   }
 }

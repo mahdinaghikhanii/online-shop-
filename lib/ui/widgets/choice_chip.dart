@@ -5,7 +5,7 @@ import 'package:online_shop/data/entity/category.dart';
 class ListChoiceChip extends StatefulWidget {
   final List<CategoryEntity> categoryEntity;
 
-  const ListChoiceChip(this.categoryEntity);
+  const ListChoiceChip(this.categoryEntity, {super.key});
   @override
   State<ListChoiceChip> createState() => ListChoiceChipState();
 }

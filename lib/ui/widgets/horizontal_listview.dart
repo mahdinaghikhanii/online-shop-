@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_shop/data/entity/product.dart';
 import 'package:online_shop/ui/widgets/image.dart';
@@ -41,13 +42,20 @@ class HorizontalListView extends StatelessWidget {
                               onPressed: () {},
                               icon: const Icon(Icons.favorite_border))),
                       Positioned(
-                          left: 60,
+                          left: 68,
                           right: 0,
-                          bottom: 0,
-                          child: IconButton(
-                              color: Theme.of(context).colorScheme.primary,
-                              onPressed: () {},
-                              icon: const Icon(Icons.card_travel))),
+                          bottom: 10,
+                          child: Container(
+                            height: 30,
+                            width: 30,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).colorScheme.primary),
+                            child: const Icon(
+                              CupertinoIcons.cart,
+                              size: 16,
+                            ),
+                          )),
                     ],
                   ),
                   const SizedBox(height: 12),
