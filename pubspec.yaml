@@ -66,7 +66,7 @@ flutter_native_splash:
   android: true
   ios: true
   web: true
-  color: "#FAFAFA"
+  color: "#1E1E1E"
   image: assets/img/logo.png
 
 # For information on the generic Dart part of this file, see the

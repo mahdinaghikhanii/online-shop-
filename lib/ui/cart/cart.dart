@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/ui/auth/auth.dart';
 import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
 
@@ -30,7 +31,11 @@ class CartScren extends StatelessWidget {
                     style: ButtonStyle(
                         backgroundColor:
                             MaterialStateProperty.all(Colors.white)),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context, rootNavigator: true).push(
+                          MaterialPageRoute(
+                              builder: ((context) => AuthScrean())));
+                    },
                     child: Text(
                       "Login or signup",
                       style: Theme.of(context)
