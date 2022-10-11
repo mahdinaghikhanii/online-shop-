@@ -27,6 +27,12 @@ class AllCallactionScren extends StatelessWidget {
         appBar: AppBar(
           elevation: 0,
           centerTitle: false,
+          leading: IconButton(
+              color: Colors.white,
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back)),
           automaticallyImplyLeading: false,
           titleSpacing: 16,
           title: Text(

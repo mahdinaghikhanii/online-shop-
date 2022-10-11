@@ -18,9 +18,12 @@ class EmptyState extends StatelessWidget {
       children: [
         image,
         const SizedBox(height: 10),
-        Text(
-          text,
-          style: Theme.of(context).textTheme.titleLarge,
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            text,
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
         ),
         const SizedBox(height: 10),
         buttonClicked
