@@ -1,6 +1,6 @@
-import '../../common/http_client.dart';
-import '../entity/category.dart';
-import '../source/product_category_data_source.dart';
+import 'package:online_shop/common/http_client.dart';
+import 'package:online_shop/data/entity/category.dart';
+import 'package:online_shop/data/source/remote/product_category_data_source.dart';
 
 final productCategoryRepository =
     ProductCategoryRepository(RemoteProductCategoryDataSource(httpClients));

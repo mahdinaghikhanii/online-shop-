@@ -8,3 +8,10 @@ abstract class AuthEvent extends Equatable {
 }
 
 class AuthStarted extends AuthEvent {}
+
+class AuthButtonIsClicked extends AuthEvent {
+  final String email;
+  final String password;
+
+  const AuthButtonIsClicked(this.email, this.password);
+}

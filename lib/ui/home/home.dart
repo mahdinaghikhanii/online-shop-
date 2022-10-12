@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/data/repo/remote/product_category_repository.dart';
+import 'package:online_shop/data/repo/remote/product_repository.dart';
 import '../../data/entity/product.dart';
 
-import '../../data/repo/product_category_repository.dart';
 import '../callaction/callaction.dart';
 import '../widgets/choice_chip.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/large_title.dart';
 import '../widgets/loading_state.dart';
-import '../../data/repo/product_repository.dart';
 
 import '../widgets/horizontal_listview.dart';
 import 'bloc/home_bloc.dart';

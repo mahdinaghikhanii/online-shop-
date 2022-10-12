@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import 'package:online_shop/ui/auth/bloc/auth_bloc.dart';
 
 class AuthScrean extends StatelessWidget {
@@ -14,9 +15,17 @@ class AuthScrean extends StatelessWidget {
     const onBackground = Colors.white;
 
     return Scaffold(
-      body: BlocProvider(
+      body: BlocProvider<AuthBloc>(
         create: (BuildContext context) {
-          final bloc = AuthBloc();
+          final bloc = AuthBloc(authRepository);
+          bloc.stream.forEach((state) {
+            if (state is AuthSuccess) {
+              Navigator.pop(context);
+            } else if (state is AuthError) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.exception.exceptionMessage)));
+            }
+          });
           bloc.add(AuthStarted());
           return bloc;
         },
@@ -36,8 +45,8 @@ class AuthScrean extends StatelessWidget {
                           shape: MaterialStateProperty.all(
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12))),
-                          backgroundColor:
-                              MaterialStateProperty.all(Color(0xFF2A2A2A)),
+                          backgroundColor: MaterialStateProperty.all(
+                              const Color(0xFF2A2A2A)),
                           foregroundColor: MaterialStateProperty.all(
                               themeData.colorScheme.secondary))),
                   colorScheme:
@@ -69,7 +78,11 @@ class AuthScrean extends StatelessWidget {
                           controller: passwordController),
                       const SizedBox(height: 30),
                       ElevatedButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            BlocProvider.of<AuthBloc>(context).add(
+                                AuthButtonIsClicked(emailController.text,
+                                    passwordController.text));
+                          },
                           child: const Text(
                             "Login",
                             style: TextStyle(color: Colors.white),
@@ -104,6 +117,7 @@ class AuthScrean extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class _PasswrodTextFiled extends StatelessWidget {
   final Color onBackground;
   final TextEditingController controller;

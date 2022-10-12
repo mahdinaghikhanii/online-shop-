@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
-
-import '../common/http_validate_respone.dart';
-import '../entity/product.dart';
+import 'package:online_shop/data/common/http_validate_respone.dart';
+import 'package:online_shop/data/entity/product.dart';
 
 abstract class IProdcutRemoteDataSource {
   Future<List<ProductEntity>> getAllProduct();
