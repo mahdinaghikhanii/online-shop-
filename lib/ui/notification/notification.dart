@@ -49,7 +49,7 @@ class NotificationScren extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "wome\s clothes flash sjsdh shj j",
+                          "womes clothes flash sjsdh shj j",
                           maxLines: 2,
                           style: Theme.of(context)
                               .textTheme
