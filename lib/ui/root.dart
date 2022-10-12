@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:online_shop/ui/notification/notification.dart';
 import 'cart/cart.dart';
 
 import 'home/home.dart';
@@ -8,6 +9,7 @@ import 'home/home.dart';
 const int homeIndex = 0;
 const int cartIndex = 1;
 const int profileIndex = 2;
+const int notifactionIndex = 3;
 
 class RootScrean extends StatefulWidget {
   const RootScrean({super.key});
@@ -23,11 +25,13 @@ class _RootScreanState extends State<RootScrean> {
   final GlobalKey<NavigatorState> _homeKey = GlobalKey();
   final GlobalKey<NavigatorState> _cartKey = GlobalKey();
   final GlobalKey<NavigatorState> _profileKey = GlobalKey();
+  final GlobalKey<NavigatorState> _notifactionKey = GlobalKey();
 
   late final map = {
     homeIndex: _homeKey,
     cartIndex: _cartKey,
     profileIndex: _profileKey,
+    notifactionIndex: _notifactionKey
   };
 
   Future<bool> _onWillPop() async {
@@ -69,12 +73,19 @@ class _RootScreanState extends State<RootScrean> {
                             onPressed: () {}, child: const Text('خروج'))
                       ],
                     ),
-                  ))
+                  )),
+              _navigator(
+                  _notifactionKey, notifactionIndex, const NotificationScren()),
             ],
           ),
           bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            unselectedItemColor: Colors.white,
+            unselectedItemColor: Colors.black,
+            showSelectedLabels: true,
+            unselectedLabelStyle: const TextStyle(fontSize: 12),
+            selectedLabelStyle: const TextStyle(fontSize: 14),
+            selectedItemColor: Theme.of(context).primaryColor,
+            showUnselectedLabels: true,
             items: const [
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.home), label: "Home"),
@@ -82,6 +93,9 @@ class _RootScreanState extends State<RootScrean> {
                   icon: Icon(CupertinoIcons.cart), label: "Cart"),
               BottomNavigationBarItem(
                   icon: Icon(CupertinoIcons.person), label: "Profile"),
+              BottomNavigationBarItem(
+                  icon: Icon(CupertinoIcons.location_north_fill),
+                  label: "Notification"),
             ],
             currentIndex: selectedScreenIndex,
             onTap: (selectIndex) {

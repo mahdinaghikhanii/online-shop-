@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:online_shop/ui/product/details..dart';
 import '../../data/entity/product.dart';
-import 'image.dart';
+import 'image_remote.dart';
 import '../../common/utils.dart';
 
 class HorizontalListView extends StatelessWidget {

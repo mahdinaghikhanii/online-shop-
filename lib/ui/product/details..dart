@@ -34,7 +34,7 @@ import 'package:flutter/material.dart'
         Widget;
 import '../../common/utils.dart';
 import 'package:online_shop/data/entity/product.dart';
-import 'package:online_shop/ui/widgets/image.dart';
+import 'package:online_shop/ui/widgets/image_remote.dart';
 
 class ProductDetailsScren extends StatelessWidget {
   final ProductEntity productEntity;

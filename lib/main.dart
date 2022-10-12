@@ -21,6 +21,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Onlin shop',
       theme: ThemeData(
+          dividerColor: Colors.grey,
           appBarTheme: const AppBarTheme(
             backgroundColor: LightThemeColors.scafoldBackgroundColro,
           ),
