@@ -15,3 +15,7 @@ class AuthButtonIsClicked extends AuthEvent {
 
   const AuthButtonIsClicked(this.email, this.password);
 }
+
+class AuthModeChangeIsClicked extends AuthEvent {}
+
+class AuthModeChangeobsecureText extends AuthEvent {}

@@ -66,7 +66,14 @@ class AuthScrean extends StatelessWidget {
                     children: [
                       const SizedBox(height: 40),
                       Center(child: SvgPicture.asset("assets/svg/logo.svg")),
-                      const SizedBox(height: 40),
+                      const SizedBox(height: 30),
+                      Text(
+                        state.isLoginMode
+                            ? "create zimro account!"
+                            : "Login to your account",
+                        style: Theme.of(context).textTheme.titleLarge,
+                      ),
+                      const SizedBox(height: 30),
                       TextField(
                           controller: emailController,
                           keyboardType: TextInputType.visiblePassword,
@@ -74,6 +81,7 @@ class AuthScrean extends StatelessWidget {
                               const InputDecoration(label: Text('Email'))),
                       const SizedBox(height: 15),
                       _PasswrodTextFiled(
+                          authState: state,
                           onBackground: Colors.white,
                           controller: passwordController),
                       const SizedBox(height: 30),
@@ -83,20 +91,25 @@ class AuthScrean extends StatelessWidget {
                                 AuthButtonIsClicked(emailController.text,
                                     passwordController.text));
                           },
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(color: Colors.white),
+                          child: Text(
+                            state.isLoginMode ? "SignUp" : "Login",
+                            style: const TextStyle(color: Colors.white),
                           )),
                       const SizedBox(height: 20),
                       GestureDetector(
-                        onTap: () {},
+                        onTap: () {
+                          BlocProvider.of<AuthBloc>(context)
+                              .add(AuthModeChangeIsClicked());
+                        },
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text("Already use zimro?"),
+                            Text(state.isLoginMode
+                                ? "Already use zimro?"
+                                : "Dont have account zimro ?"),
                             const SizedBox(width: 6),
                             Text(
-                              "Log in",
+                              state.isLoginMode ? "Log in" : "SignUp",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
@@ -117,27 +130,34 @@ class AuthScrean extends StatelessWidget {
   }
 }
 
-// ignore: must_be_immutable
 class _PasswrodTextFiled extends StatelessWidget {
   final Color onBackground;
+  final AuthState authState;
   final TextEditingController controller;
-  _PasswrodTextFiled({required this.onBackground, required this.controller});
+  const _PasswrodTextFiled(
+      {required this.onBackground,
+      required this.controller,
+      required this.authState});
 
-  bool obsecureText = false;
   @override
   Widget build(BuildContext context) {
-    return TextField(
-        controller: controller,
-        keyboardType: TextInputType.visiblePassword,
-        decoration: InputDecoration(
-            suffixIcon: IconButton(
-                onPressed: () {},
-                icon: Icon(
-                  obsecureText
-                      ? Icons.visibility
-                      : Icons.visibility_off_outlined,
-                  color: onBackground.withOpacity(0.8),
-                )),
-            label: const Text('Password')));
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, state) => TextField(
+          controller: controller,
+          keyboardType: TextInputType.visiblePassword,
+          decoration: InputDecoration(
+              suffixIcon: IconButton(
+                  onPressed: () {
+                    BlocProvider.of<AuthBloc>(context)
+                        .add(AuthModeChangeobsecureText());
+                  },
+                  icon: Icon(
+                    state.obsecureText
+                        ? Icons.visibility
+                        : Icons.visibility_off_outlined,
+                    color: onBackground.withOpacity(0.8),
+                  )),
+              label: const Text('Password'))),
+    );
   }
 }

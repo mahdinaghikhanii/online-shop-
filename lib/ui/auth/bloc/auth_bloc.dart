@@ -9,15 +9,28 @@ part 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   bool isLoginMode;
+  bool obsecureText;
   final AuthRepository repository;
-  AuthBloc(this.repository, {this.isLoginMode = true})
-      : super(AuthInitial(isLoginMode)) {
+  AuthBloc(this.repository, {this.isLoginMode = true, this.obsecureText = true})
+      : super(AuthInitial(isLoginMode, obsecureText)) {
     on<AuthEvent>((event, emit) async {
       try {
         if (event is AuthButtonIsClicked) {
-          emit(AuthLoading(isLoginMode));
-          await repository.login(event.email, event.password);
-          emit(AuthSuccess(isLoginMode));
+          if (isLoginMode) {
+            emit(AuthLoading(isLoginMode, obsecureText));
+            await repository.login(event.email, event.password);
+            emit(AuthSuccess(isLoginMode, obsecureText));
+          } else {
+            emit(AuthLoading(isLoginMode, obsecureText));
+            await repository.signUp(event.email, event.password);
+            emit(AuthSuccess(isLoginMode, obsecureText));
+          }
+        } else if (event is AuthModeChangeIsClicked) {
+          isLoginMode = !isLoginMode;
+          emit(AuthInitial(isLoginMode, obsecureText));
+        } else if (event is AuthModeChangeobsecureText) {
+          obsecureText = !obsecureText;
+          emit(AuthInitial(isLoginMode, obsecureText));
         }
       } catch (e) {
         emit(AuthError(AppException()));

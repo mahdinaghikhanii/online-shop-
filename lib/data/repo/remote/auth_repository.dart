@@ -3,7 +3,8 @@ import 'dart:ffi';
 import 'package:flutter/widgets.dart';
 import 'package:online_shop/common/http_client.dart';
 import 'package:online_shop/data/entity/auth.dart';
-import 'package:online_shop/data/source/auth_data_source.dart';
+
+import 'package:online_shop/data/source/remote/auth_data_source.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final authRepository = AuthRepository(RemoteAuthDataSource(httpClients));
