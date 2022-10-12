@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
                 titleMedium: TextStyle(color: Colors.white)),
           ),
           colorScheme: const ColorScheme.light(
+              secondary: LightThemeColors.secondaryColor,
               primary: LightThemeColors.primariColor,
               onPrimary: LightThemeColors.scafoldBackgroundColro)),
       home: const RootScrean(),

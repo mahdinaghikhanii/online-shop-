@@ -8,3 +8,5 @@ abstract class NotificationEvent extends Equatable {
 }
 
 class NotificationStarted extends NotificationEvent {}
+
+class NotificationButtonDelete extends NotificationEvent {}

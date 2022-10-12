@@ -20,9 +20,12 @@ class EmptyState extends StatelessWidget {
         const SizedBox(height: 10),
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Text(
-            text,
-            style: Theme.of(context).textTheme.titleLarge,
+          child: Expanded(
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.titleLarge,
+              textAlign: TextAlign.center,
+            ),
           ),
         ),
         const SizedBox(height: 10),

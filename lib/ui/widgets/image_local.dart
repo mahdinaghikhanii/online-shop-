@@ -8,6 +8,9 @@ class LocalImageService extends StatelessWidget {
   Widget build(BuildContext context) {
     return ClipRRect(
         borderRadius: BorderRadius.circular(12),
-        child: Image.asset(localImageAddres));
+        child: Image.asset(
+          localImageAddres,
+          fit: BoxFit.cover,
+        ));
   }
 }

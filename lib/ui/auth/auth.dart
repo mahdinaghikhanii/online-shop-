@@ -93,7 +93,8 @@ class AuthScrean extends StatelessWidget {
                           },
                           child: Text(
                             state.isLoginMode ? "SignUp" : "Login",
-                            style: const TextStyle(color: Colors.white),
+                            style:
+                                TextStyle(color: Colors.white.withOpacity(0.4)),
                           )),
                       const SizedBox(height: 20),
                       GestureDetector(

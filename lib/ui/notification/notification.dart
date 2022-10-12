@@ -27,8 +27,15 @@ class NotificationScren extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(color: Colors.white),
+                  .copyWith(color: Colors.white, fontSize: 25),
             ),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: TextButton(
+                    onPressed: () {}, child: const Text("Delete all")),
+              )
+            ],
           ),
           body: Column(
             children: [

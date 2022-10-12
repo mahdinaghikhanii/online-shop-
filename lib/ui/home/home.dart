@@ -124,8 +124,8 @@ class HomeScrean extends StatelessWidget {
                   text: state.exception.exceptionMessage,
                   buttonClicked: ElevatedButton(
                       style: ButtonStyle(
-                          backgroundColor:
-                              MaterialStateProperty.all(Colors.white)),
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).colorScheme.secondary)),
                       onPressed: () {
                         BlocProvider.of<HomeBloc>(context).add(HomeRefresh());
                       },
@@ -134,7 +134,7 @@ class HomeScrean extends StatelessWidget {
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
-                            .copyWith(color: Colors.black),
+                            .copyWith(color: Colors.white.withOpacity(0.4)),
                       ))),
             );
           } else {
