@@ -78,31 +78,35 @@ class _RootScreanState extends State<RootScrean> {
                   _notifactionKey, notifactionIndex, const NotificationScren()),
             ],
           ),
-          bottomNavigationBar: BottomNavigationBar(
-            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-            unselectedItemColor: Colors.black,
-            showSelectedLabels: true,
-            unselectedLabelStyle: const TextStyle(fontSize: 12),
-            selectedLabelStyle: const TextStyle(fontSize: 14),
-            selectedItemColor: Theme.of(context).primaryColor,
-            showUnselectedLabels: true,
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.home), label: "Home"),
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.cart), label: "Cart"),
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.person), label: "Profile"),
-              BottomNavigationBarItem(
-                  icon: Icon(CupertinoIcons.location_north_fill),
-                  label: "Notification"),
-            ],
-            currentIndex: selectedScreenIndex,
-            onTap: (selectIndex) {
-              setState(() {
-                selectedScreenIndex = selectIndex;
-              });
-            },
+          bottomNavigationBar: Theme(
+            data: Theme.of(context).copyWith(
+              canvasColor: Theme.of(context).scaffoldBackgroundColor,
+            ),
+            child: BottomNavigationBar(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+              showSelectedLabels: true,
+              unselectedLabelStyle: const TextStyle(fontSize: 12),
+              selectedLabelStyle: const TextStyle(fontSize: 14),
+              selectedItemColor: Theme.of(context).colorScheme.primary,
+              showUnselectedLabels: true,
+              items: const [
+                BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.home), label: "Home"),
+                BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.cart), label: "Cart"),
+                BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.person), label: "Profile"),
+                BottomNavigationBarItem(
+                    icon: Icon(CupertinoIcons.location_north_fill),
+                    label: "Notification"),
+              ],
+              currentIndex: selectedScreenIndex,
+              onTap: (selectIndex) {
+                setState(() {
+                  selectedScreenIndex = selectIndex;
+                });
+              },
+            ),
           )),
     );
   }

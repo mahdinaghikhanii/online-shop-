@@ -68,7 +68,7 @@ class CartScren extends StatelessWidget {
           } else if (state is CartLoading) {
             return const LoadingState();
           } else if (state is CartSuccess) {
-            return _ItemCart();
+            return const _ItemCart();
           } else if (state is CartError) {
             return Center(
               child: EmptyState(
@@ -100,9 +100,7 @@ class CartScren extends StatelessWidget {
 }
 
 class _ItemCart extends StatelessWidget {
-  const _ItemCart({
-    super.key,
-  });
+  const _ItemCart();
 
   @override
   Widget build(BuildContext context) {
