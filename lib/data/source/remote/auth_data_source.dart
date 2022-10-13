@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
 import 'package:online_shop/data/common/http_validate_respone.dart';
@@ -22,12 +24,15 @@ class RemoteAuthDataSource
 
   @override
   Future<AuthEntity> login(String email, String password) async {
-    final respone = await httpClient
-        .post("auth/login", data: {"username": email, "password": password});
-    debugPrint(respone.data);
+    Map<String, dynamic> body = {
+      "username": email,
+      "password": password,
+    };
+    final respone = await httpClient.post("auth/login", data: jsonEncode(body));
+    debugPrint(respone.toString());
 
     validateRespone(respone);
-    return AuthEntity(respone.data["token"]);
+    return AuthEntity(respone.data.toString());
   }
 
   @override

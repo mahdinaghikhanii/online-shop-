@@ -44,7 +44,7 @@ class AuthRepository implements IAuthRepository {
 
   Future<void> loadInfo() async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-    final String accessToken = sharedPreferences.getString("key") ?? "";
+    final String accessToken = sharedPreferences.getString("acces_token") ?? "";
     if (accessToken.isNotEmpty) {
       authChangeNotifire.value = AuthEntity(accessToken);
     }

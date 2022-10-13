@@ -69,8 +69,8 @@ class AuthScrean extends StatelessWidget {
                       const SizedBox(height: 30),
                       Text(
                         state.isLoginMode
-                            ? "create zimro account!"
-                            : "Login to your account",
+                            ? "Login to your account"
+                            : "create zimro account!",
                         style: Theme.of(context).textTheme.titleLarge,
                       ),
                       const SizedBox(height: 30),
@@ -92,7 +92,7 @@ class AuthScrean extends StatelessWidget {
                                     passwordController.text));
                           },
                           child: Text(
-                            state.isLoginMode ? "SignUp" : "Login",
+                            state.isLoginMode ? "Login" : "SignUp",
                             style:
                                 TextStyle(color: Colors.white.withOpacity(0.4)),
                           )),
@@ -106,11 +106,11 @@ class AuthScrean extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(state.isLoginMode
-                                ? "Already use zimro?"
-                                : "Dont have account zimro ?"),
+                                ? "Dont have account zimro ?"
+                                : "Already use zimro?"),
                             const SizedBox(width: 6),
                             Text(
-                              state.isLoginMode ? "Log in" : "SignUp",
+                              state.isLoginMode ? "SignUp" : "Login",
                               style: Theme.of(context)
                                   .textTheme
                                   .titleLarge!
@@ -144,6 +144,7 @@ class _PasswrodTextFiled extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) => TextField(
+          obscureText: state.obsecureText,
           controller: controller,
           keyboardType: TextInputType.visiblePassword,
           decoration: InputDecoration(
