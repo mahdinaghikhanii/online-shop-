@@ -10,6 +10,10 @@ abstract class CartEvent extends Equatable {
 class CartStarted extends CartEvent {
   final AuthEntity? authEntity;
   const CartStarted(this.authEntity);
-  @override
-  List<Object> get props => [authEntity!];
+}
+
+class CartAuthInfoChanges extends CartEvent {
+  final AuthEntity? authEntity;
+
+  const CartAuthInfoChanges(this.authEntity);
 }

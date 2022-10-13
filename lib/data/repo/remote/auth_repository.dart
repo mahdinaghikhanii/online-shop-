@@ -12,13 +12,13 @@ final authRepository = AuthRepository(RemoteAuthDataSource(httpClients));
 abstract class IAuthRepository {
   Future<void> login(String emial, String password);
   Future<void> signUp(String email, String password);
-  Future<Void> singOut(String email, String password);
+  Future<void> singOut();
 }
 
 class AuthRepository implements IAuthRepository {
   static final ValueNotifier<AuthEntity?> authChangeNotifire =
       ValueNotifier(null);
-  IRemoteAuthDataSource dataSource;
+  final IRemoteAuthDataSource dataSource;
   AuthRepository(this.dataSource);
   @override
   Future<void> login(String email, String password) async {
@@ -31,15 +31,10 @@ class AuthRepository implements IAuthRepository {
     throw UnimplementedError();
   }
 
-  @override
-  Future<Void> singOut(String email, String password) {
-    throw UnimplementedError();
-  }
-
   Future<void> _persisAuthTokens(AuthEntity authEntity) async {
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString("acces_token", authEntity.token);
-    loadInfo();
+    await loadInfo();
   }
 
   Future<void> loadInfo() async {
@@ -48,5 +43,12 @@ class AuthRepository implements IAuthRepository {
     if (accessToken.isNotEmpty) {
       authChangeNotifire.value = AuthEntity(accessToken);
     }
+  }
+
+  @override
+  Future<void> singOut() async {
+    SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+    sharedPreferences.clear();
+    sharedPreferences.remove("acces_token");
   }
 }

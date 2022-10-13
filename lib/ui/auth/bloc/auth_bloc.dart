@@ -16,8 +16,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthEvent>((event, emit) async {
       try {
         if (event is AuthButtonIsClicked) {
+          emit(AuthLoading(isLoginMode, obsecureText));
           if (isLoginMode) {
-            emit(AuthLoading(isLoginMode, obsecureText));
             await repository.login(event.email, event.password);
             emit(AuthSuccess(isLoginMode, obsecureText));
           } else {

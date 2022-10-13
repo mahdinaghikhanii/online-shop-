@@ -10,10 +10,18 @@ class CartBloc extends Bloc<CartEvent, CartState> {
   CartBloc() : super(CartLoading()) {
     on<CartEvent>((event, emit) {
       if (event is CartStarted) {
-        if (event.authEntity == null || event.authEntity!.token.isEmpty) {
+        final authInfo = event.authEntity;
+        if (authInfo == null || authInfo.token.isEmpty) {
           emit(CartAuthReaurid());
         } else {
-          emit(CartLoading());
+          emit(CartSuccess());
+        }
+        if (event is CartAuthInfoChanges) {
+          if (authInfo == null || authInfo.token.isEmpty) {
+            emit(CartAuthReaurid());
+          } else {
+            emit(CartSuccess());
+          }
         }
       }
     });

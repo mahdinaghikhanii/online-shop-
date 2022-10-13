@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:online_shop/common/http_client.dart';
+import 'package:online_shop/data/repo/remote/auth_repository.dart';
+import 'package:online_shop/data/source/remote/auth_data_source.dart';
+import 'package:online_shop/ui/auth/bloc/auth_bloc.dart';
 import 'package:online_shop/ui/notification/notification.dart';
 import 'cart/cart.dart';
 
@@ -70,7 +74,11 @@ class _RootScreanState extends State<RootScrean> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ElevatedButton(
-                            onPressed: () {}, child: const Text('خروج'))
+                            onPressed: () {
+                              AuthRepository(RemoteAuthDataSource(httpClients))
+                                  .singOut();
+                            },
+                            child: const Text('خروج'))
                       ],
                     ),
                   )),

@@ -9,14 +9,37 @@ import 'package:online_shop/ui/widgets/empty_state.dart';
 import 'package:online_shop/ui/widgets/image_local.dart';
 import 'package:online_shop/ui/widgets/loading_state.dart';
 
-class CartScren extends StatelessWidget {
+class CartScren extends StatefulWidget {
   const CartScren({super.key});
 
   @override
+  State<CartScren> createState() => _CartScrenState();
+}
+
+class _CartScrenState extends State<CartScren> {
+  CartBloc? cartBloc;
+  @override
+  void initState() {
+    super.initState();
+    AuthRepository.authChangeNotifire.addListener(valueListenChangeNotifire);
+  }
+
+  void valueListenChangeNotifire() {
+    cartBloc!.add(CartAuthInfoChanges(AuthRepository.authChangeNotifire.value));
+  }
+
+  @override
+  void dispose() {
+    cartBloc!.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<CartBloc>(
       create: ((context) {
         final bloc = CartBloc();
+        cartBloc = bloc;
         bloc.add(CartStarted(AuthRepository.authChangeNotifire.value));
         return bloc;
       }),
