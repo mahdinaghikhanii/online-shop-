@@ -18,6 +18,7 @@ class ProductLocalDataSource implements IProductLocalDataSource<ProductEntity> {
 
   @override
   Future<List<ProductEntity>> getAllProduct() async {
+    Future.delayed(const Duration(seconds: 2));
     return box.values.toList();
   }
 

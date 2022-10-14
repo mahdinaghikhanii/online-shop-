@@ -10,7 +10,7 @@ class ProdcutSort {
   final String allProduct = "products";
 }
 
-@HiveType(typeId: 0)
+@HiveType(typeId: 5)
 class ProductEntity extends HiveObject {
   @HiveField(0)
   int id;
@@ -40,7 +40,7 @@ class ProductEntity extends HiveObject {
         ratingEntity = RatingEntity.formJson(json["rating"]);
 }
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 6)
 class RatingEntity extends HiveObject {
   @HiveField(0)
   double rate;

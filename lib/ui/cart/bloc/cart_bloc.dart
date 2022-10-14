@@ -1,7 +1,10 @@
+import 'dart:async';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop/common/exception.dart';
 import 'package:online_shop/data/entity/auth.dart';
+import 'package:online_shop/data/entity/product_entity.dart';
 import 'package:online_shop/data/repo/local/product_local_repository.dart';
 
 part 'cart_event.dart';
@@ -16,16 +19,30 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         if (authInfo == null || authInfo.token.isEmpty) {
           emit(CartAuthReaurid());
         } else {
-          emit(CartSuccess());
+          cartItemsSuccess(emit);
         }
         if (event is CartAuthInfoChanges) {
           if (authInfo == null || authInfo.token.isEmpty) {
             emit(CartAuthReaurid());
           } else {
-            emit(CartSuccess());
+            cartItemsSuccess(emit);
           }
         }
       }
     });
+  }
+
+  cartItemsSuccess(Emitter<CartState> emit) async {
+    try {
+      emit(CartLoading());
+      final allProductsCart = await repository.getAllProduct();
+      if (allProductsCart.isEmpty) {
+        emit(CartIsEmpty());
+      } else {
+        emit(CartSuccess(allProductsCart));
+      }
+    } catch (e) {
+      emit(CartError(AppException()));
+    }
   }
 }

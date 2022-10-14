@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/common/utils.dart';
+import 'package:online_shop/data/entity/product_entity.dart';
 import 'package:online_shop/data/repo/local/product_local_repository.dart';
 import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import 'package:online_shop/ui/auth/auth.dart';
 import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
 import 'package:online_shop/ui/widgets/image_local.dart';
+import 'package:online_shop/ui/widgets/image_remote.dart';
 import 'package:online_shop/ui/widgets/loading_state.dart';
 
 class CartScren extends StatefulWidget {
@@ -92,7 +95,22 @@ class _CartScrenState extends State<CartScren> {
           } else if (state is CartLoading) {
             return const LoadingState();
           } else if (state is CartSuccess) {
-            return const _ItemCart();
+            final allproductCart = state.allProductsCart;
+            return ListView.builder(
+                itemCount: allproductCart.length,
+                itemBuilder: (context, index) {
+                  return _ItemCart(allproductCart[index]);
+                });
+          } else if (state is CartIsEmpty) {
+            return Center(
+              child: EmptyState(
+                  image: SvgPicture.asset(
+                    "assets/svg/empty_cart.svg",
+                    width: 200,
+                  ),
+                  text: "Your cart is empty",
+                  buttonClicked: Container()),
+            );
           } else if (state is CartError) {
             return Center(
               child: EmptyState(
@@ -124,7 +142,8 @@ class _CartScrenState extends State<CartScren> {
 }
 
 class _ItemCart extends StatelessWidget {
-  const _ItemCart();
+  final ProductEntity productEntity;
+  const _ItemCart(this.productEntity);
 
   @override
   Widget build(BuildContext context) {
@@ -136,14 +155,14 @@ class _ItemCart extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Padding(
-            padding: EdgeInsets.only(left: 16, right: 6),
+          Padding(
+            padding: const EdgeInsets.only(left: 16, right: 6),
             child: SizedBox(
                 width: 120,
                 height: 146,
-                child: LocalImageService(
-                  localImageAddres: "assets/img/wo.png",
-                )),
+                child: ImageLoadingService(
+                    borderRadius: BorderRadius.circular(12),
+                    imageUrl: productEntity.image)),
           ),
           Expanded(
             child: Column(
@@ -157,7 +176,7 @@ class _ItemCart extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Mens",
+                        productEntity.category,
                         style: Theme.of(context)
                             .textTheme
                             .titleSmall!
@@ -165,7 +184,7 @@ class _ItemCart extends StatelessWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        "Original levis dain jasdjsadhjas djs hdjshd jsh ",
+                        productEntity.title,
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!
@@ -175,7 +194,7 @@ class _ItemCart extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                       ),
                       Text(
-                        "\$22",
+                        productEntity.price.withPriceLabel,
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium!

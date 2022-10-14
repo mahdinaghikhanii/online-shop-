@@ -35,6 +35,7 @@ import 'package:flutter/material.dart'
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop/data/repo/local/product_local_repository.dart';
 import 'package:online_shop/ui/products/bloc/details_bloc.dart';
+import 'package:online_shop/ui/widgets/loading_state.dart';
 
 import '../../common/utils.dart';
 import 'package:online_shop/data/entity/product_entity.dart';
@@ -46,25 +47,30 @@ class ProductDetailsScren extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-      floatingActionButton: SizedBox(
-        width: MediaQuery.of(context).size.width - 40,
-        child: FloatingActionButton.extended(
-            backgroundColor: Theme.of(context).colorScheme.onPrimary,
-            onPressed: () {},
-            label: const Text(
-              "Add to cart",
-              style: TextStyle(color: Colors.white),
-            )),
-      ),
-      body: BlocProvider<DetailsBloc>(
-        create: (BuildContext context) {
-          return DetailsBloc(productLocalRepository);
-        },
-        child: BlocBuilder<DetailsBloc, DetailsState>(
-          builder: (context, state) => SafeArea(
+    return BlocProvider<DetailsBloc>(
+      create: (BuildContext context) {
+        return DetailsBloc(productLocalRepository);
+      },
+      child: BlocBuilder<DetailsBloc, DetailsState>(
+        builder: (context, state) => Scaffold(
+          backgroundColor: Colors.white,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerFloat,
+          floatingActionButton: SizedBox(
+              width: MediaQuery.of(context).size.width - 40,
+              child: FloatingActionButton.extended(
+                  backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                  onPressed: () {
+                    BlocProvider.of<DetailsBloc>(context)
+                        .add(DetailsButtonClickedAddToCart(productEntity));
+                  },
+                  label: state is DetailsAddToCartLoading
+                      ? LoadingState()
+                      : Text(
+                          "Add to cart",
+                          style: TextStyle(color: Colors.white),
+                        ))),
+          body: SafeArea(
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(

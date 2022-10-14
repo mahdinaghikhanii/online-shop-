@@ -16,6 +16,8 @@ void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ProductEntityAdapter());
+  Hive.registerAdapter(RatingEntityAdapter());
+  await Hive.openBox<ProductEntity>(producBoxName);
   await authRepository.loadInfo();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   runApp(const MyApp());
