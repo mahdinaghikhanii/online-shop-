@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:online_shop/ui/products/details..dart';
 import '../../common/utils.dart';
-import '../../data/entity/product.dart';
-import '../product/details..dart';
+import '../../data/entity/product_entity.dart';
+
 import 'image_remote.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';

@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/widgets.dart';
 import 'package:online_shop/common/http_client.dart';
 import 'package:online_shop/data/entity/auth.dart';

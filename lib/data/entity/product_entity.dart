@@ -1,5 +1,7 @@
 import 'package:hive/hive.dart';
 
+part 'product_entity.g.dart';
+
 class ProdcutSort {
   final String electronics = "electronics";
   final String jewelery = "jewelery";
@@ -9,20 +11,24 @@ class ProdcutSort {
 }
 
 @HiveType(typeId: 0)
-class ProductEntity {
+class ProductEntity extends HiveObject {
   @HiveField(0)
-  final int id;
+  int id;
   @HiveField(1)
-  final String title;
+  String title;
   @HiveField(2)
-  final double price;
+  double price;
   @HiveField(3)
-  final String description;
+  String description;
   @HiveField(4)
-  final String category;
+  String category;
   @HiveField(5)
-  final String image;
-  final RatingEntity ratingEntity;
+  String image;
+  @HiveField(6)
+  RatingEntity ratingEntity;
+
+  ProductEntity(this.category, this.description, this.id, this.image,
+      this.price, this.ratingEntity, this.title);
 
   ProductEntity.fromJson(Map<String, dynamic> json)
       : id = json['id'],
@@ -35,11 +41,13 @@ class ProductEntity {
 }
 
 @HiveType(typeId: 1)
-class RatingEntity {
+class RatingEntity extends HiveObject {
   @HiveField(0)
-  final double rate;
+  double rate;
   @HiveField(1)
-  final int count;
+  int count;
+
+  RatingEntity(this.count, this.rate);
 
   RatingEntity.formJson(Map<String, dynamic> json)
       : rate = json['rate'].toDouble(),

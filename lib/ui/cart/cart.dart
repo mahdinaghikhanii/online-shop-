@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/data/repo/local/product_local_repository.dart';
 import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import 'package:online_shop/ui/auth/auth.dart';
 import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
@@ -38,7 +39,7 @@ class _CartScrenState extends State<CartScren> {
   Widget build(BuildContext context) {
     return BlocProvider<CartBloc>(
       create: ((context) {
-        final bloc = CartBloc();
+        final bloc = CartBloc(productLocalRepository);
         cartBloc = bloc;
         bloc.add(CartStarted(AuthRepository.authChangeNotifire.value));
         return bloc;

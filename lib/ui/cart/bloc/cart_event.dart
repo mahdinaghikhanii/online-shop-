@@ -17,3 +17,5 @@ class CartAuthInfoChanges extends CartEvent {
 
   const CartAuthInfoChanges(this.authEntity);
 }
+
+class CartAddProducts extends CartEvent {}

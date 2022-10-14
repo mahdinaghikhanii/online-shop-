@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_shop/ui/product/details..dart';
-import '../../data/entity/product.dart';
+import 'package:online_shop/ui/products/details..dart';
+
+import '../../data/entity/product_entity.dart';
 import 'image_remote.dart';
 import '../../common/utils.dart';
 

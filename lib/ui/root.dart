@@ -4,7 +4,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:online_shop/common/http_client.dart';
 import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import 'package:online_shop/data/source/remote/auth_data_source.dart';
-import 'package:online_shop/ui/auth/bloc/auth_bloc.dart';
 import 'package:online_shop/ui/notification/notification.dart';
 import 'cart/cart.dart';
 

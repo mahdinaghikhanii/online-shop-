@@ -6,7 +6,7 @@ import 'package:online_shop/data/repo/remote/product_repository.dart';
 import '../../../data/entity/category.dart';
 
 import '../../../common/exception.dart';
-import '../../../data/entity/product.dart';
+import '../../../data/entity/product_entity.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';

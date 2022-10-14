@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:online_shop/data/repo/remote/product_repository.dart';
 
 import '../../../common/exception.dart';
-import '../../../data/entity/product.dart';
+import '../../../data/entity/product_entity.dart';
 
 part 'callaction_event.dart';
 part 'callaction_state.dart';
