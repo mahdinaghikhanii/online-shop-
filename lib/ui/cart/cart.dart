@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,9 +11,10 @@ import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import 'package:online_shop/ui/auth/auth.dart';
 import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
-import 'package:online_shop/ui/widgets/image_local.dart';
+
 import 'package:online_shop/ui/widgets/image_remote.dart';
 import 'package:online_shop/ui/widgets/loading_state.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CartScren extends StatefulWidget {
   const CartScren({super.key});
@@ -21,7 +24,10 @@ class CartScren extends StatefulWidget {
 }
 
 class _CartScrenState extends State<CartScren> {
+  final RefreshController _refreshController = RefreshController();
   CartBloc? cartBloc;
+  StreamSubscription? stateStreamSubscription;
+
   @override
   void initState() {
     super.initState();
@@ -35,32 +41,48 @@ class _CartScrenState extends State<CartScren> {
   @override
   void dispose() {
     cartBloc!.close();
+    AuthRepository.authChangeNotifire.removeListener(valueListenChangeNotifire);
+    cartBloc!.close();
+    stateStreamSubscription?.cancel();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider<CartBloc>(
-      create: ((context) {
-        final bloc = CartBloc(productLocalRepository);
-        cartBloc = bloc;
-        bloc.add(CartStarted(AuthRepository.authChangeNotifire.value));
-        return bloc;
-      }),
-      child: Scaffold(
-        appBar: AppBar(
-          centerTitle: false,
-          titleSpacing: 16,
-          elevation: 0,
-          title: Text(
-            "My cart",
-            style: Theme.of(context)
-                .textTheme
-                .titleLarge!
-                .copyWith(color: Colors.white, fontSize: 24),
-          ),
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: false,
+        titleSpacing: 16,
+        elevation: 0,
+        title: Text(
+          "My cart",
+          style: Theme.of(context)
+              .textTheme
+              .titleLarge!
+              .copyWith(color: Colors.white, fontSize: 24),
         ),
-        body: BlocBuilder<CartBloc, CartState>(builder: ((context, state) {
+      ),
+      body: BlocProvider<CartBloc>(
+        lazy: false,
+        create: ((context) {
+          final bloc = CartBloc(productLocalRepository);
+          cartBloc = bloc;
+          if (_refreshController.isLoading) {
+            print("hi");
+          }
+          stateStreamSubscription = bloc.stream.listen((state) {
+            if (_refreshController.isRefresh) {
+              if (state is CartSuccess) {
+                _refreshController.refreshCompleted();
+              } else if (state is CartError) {
+                _refreshController.refreshFailed();
+              }
+            }
+          });
+          bloc.add(CartStarted(AuthRepository.authChangeNotifire.value));
+          return bloc;
+        }),
+        child: BlocBuilder<CartBloc, CartState>(builder: ((context, state) {
           if (state is CartAuthReaurid) {
             return Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -96,11 +118,19 @@ class _CartScrenState extends State<CartScren> {
             return const LoadingState();
           } else if (state is CartSuccess) {
             final allproductCart = state.allProductsCart;
-            return ListView.builder(
-                itemCount: allproductCart.length,
-                itemBuilder: (context, index) {
-                  return _ItemCart(allproductCart[index]);
-                });
+            return SmartRefresher(
+              controller: _refreshController,
+              onRefresh: () {
+                BlocProvider.of<CartBloc>(context).add(CartStarted(
+                    AuthRepository.authChangeNotifire.value,
+                    isRefreshing: true));
+              },
+              child: ListView.builder(
+                  itemCount: allproductCart.length,
+                  itemBuilder: (context, index) {
+                    return _ItemCart(allproductCart[index]);
+                  }),
+            );
           } else if (state is CartIsEmpty) {
             return Center(
               child: EmptyState(

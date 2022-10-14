@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:online_shop/data/entity/product_entity.dart';
+import 'package:online_shop/main.dart';
 
 abstract class IProductLocalDataSource<T> {
   Future<List<T>> getAllProduct();
@@ -25,7 +26,7 @@ class ProductLocalDataSource implements IProductLocalDataSource<ProductEntity> {
   @override
   Future<ProductEntity> addProducts(ProductEntity productEntity) async {
     if (box.containsKey(productEntity.id)) {
-      await box.delete("prodcut_cart");
+      await box.delete(producBoxName);
     } else {
       await box.add(productEntity);
     }

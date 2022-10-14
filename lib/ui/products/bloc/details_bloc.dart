@@ -10,11 +10,12 @@ part 'details_state.dart';
 class DetailsBloc extends Bloc<DetailsEvent, DetailsState> {
   ProductLocalRepository localRepository;
   DetailsBloc(this.localRepository) : super(DetailsInitial()) {
-    on<DetailsEvent>((event, emit) {
+    on<DetailsEvent>((event, emit) async {
       if (event is DetailsButtonClickedAddToCart) {
         try {
           emit(DetailsAddToCartLoading());
-          localRepository.addProducts(event.productEntity);
+          await Future.delayed(const Duration(seconds: 2));
+          await localRepository.addProducts(event.productEntity);
           emit(DetailsAddToCartSuccess());
         } catch (e) {
           emit(DetailsAddToCartError(AppException()));
