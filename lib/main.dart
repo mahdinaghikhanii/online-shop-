@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hive_flutter/adapters.dart';
@@ -13,13 +13,12 @@ import 'theme.dart';
 const producBoxName = "product_cart_box";
 
 void main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ProductEntityAdapter());
   Hive.registerAdapter(RatingEntityAdapter());
   await Hive.openBox<ProductEntity>(producBoxName);
   await authRepository.loadInfo();
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+
   runApp(const MyApp());
 }
 

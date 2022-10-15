@@ -63,20 +63,17 @@ class _CartScrenState extends State<CartScren> {
         ),
       ),
       body: BlocProvider<CartBloc>(
-        lazy: false,
         create: ((context) {
           final bloc = CartBloc(productLocalRepository);
           cartBloc = bloc;
-          if (_refreshController.isLoading) {
-            print("hi");
-          }
+
           stateStreamSubscription = bloc.stream.listen((state) {
             if (_refreshController.isRefresh) {
               if (state is CartSuccess) {
                 _refreshController.refreshCompleted();
-              } else if (state is CartError) {
-                _refreshController.refreshFailed();
               }
+            } else if (state is CartError) {
+              _refreshController.refreshFailed();
             }
           });
           bloc.add(CartStarted(AuthRepository.authChangeNotifire.value));
@@ -117,18 +114,17 @@ class _CartScrenState extends State<CartScren> {
           } else if (state is CartLoading) {
             return const LoadingState();
           } else if (state is CartSuccess) {
-            final allproductCart = state.allProductsCart;
             return SmartRefresher(
               controller: _refreshController,
               onRefresh: () {
-                BlocProvider.of<CartBloc>(context).add(CartStarted(
+                cartBloc?.add(CartStarted(
                     AuthRepository.authChangeNotifire.value,
                     isRefreshing: true));
               },
               child: ListView.builder(
-                  itemCount: allproductCart.length,
+                  itemCount: state.allProductsCart.length,
                   itemBuilder: (context, index) {
-                    return _ItemCart(allproductCart[index]);
+                    return _ItemCart(state.allProductsCart[index]);
                   }),
             );
           } else if (state is CartIsEmpty) {

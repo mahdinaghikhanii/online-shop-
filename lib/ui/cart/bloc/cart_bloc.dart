@@ -17,14 +17,15 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         if (authInfo == null || authInfo.token.isEmpty) {
           emit(CartAuthReaurid());
         } else {
-          //   await Future.delayed(const Duration(seconds: 2));
           await cartItemsSuccess(emit, event.isRefreshing);
         }
         if (event is CartAuthInfoChanges) {
           if (authInfo == null || authInfo.token.isEmpty) {
             emit(CartAuthReaurid());
           } else {
-            await cartItemsSuccess(emit, false);
+            if (state is CartAuthReaurid) {
+              await cartItemsSuccess(emit, false);
+            }
           }
         }
       }

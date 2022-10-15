@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
 import 'package:online_shop/ui/products/details..dart';
 
 import '../../data/entity/product_entity.dart';
@@ -53,15 +55,20 @@ class HorizontalListView extends StatelessWidget {
                             left: 68,
                             right: 0,
                             bottom: 10,
-                            child: Container(
-                              height: 30,
-                              width: 30,
-                              decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Theme.of(context).colorScheme.primary),
-                              child: const Icon(
-                                CupertinoIcons.cart,
-                                size: 16,
+                            child: InkWell(
+                              onTap: () => BlocProvider.of<CartBloc>(context)
+                                  .add(CartAddProducts()),
+                              child: Container(
+                                height: 30,
+                                width: 30,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    color:
+                                        Theme.of(context).colorScheme.primary),
+                                child: const Icon(
+                                  CupertinoIcons.cart,
+                                  size: 16,
+                                ),
                               ),
                             )),
                       ],

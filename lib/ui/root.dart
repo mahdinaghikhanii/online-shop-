@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:online_shop/common/http_client.dart';
 import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import 'package:online_shop/data/source/remote/auth_data_source.dart';
@@ -56,7 +55,6 @@ class _RootScreanState extends State<RootScrean> {
 
   @override
   Widget build(BuildContext context) {
-    FlutterNativeSplash.remove();
     return WillPopScope(
       onWillPop: _onWillPop,
       child: Scaffold(
