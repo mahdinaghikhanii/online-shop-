@@ -10,7 +10,7 @@ abstract class CartState extends Equatable {
 class CartLoading extends CartState {}
 
 class CartSuccess extends CartState {
-  final List<ProductEntity> allProductsCart;
+  final List<CartEntity> allProductsCart;
   const CartSuccess(this.allProductsCart);
 
   @override

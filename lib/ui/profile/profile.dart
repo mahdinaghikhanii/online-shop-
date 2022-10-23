@@ -14,7 +14,15 @@ class ProfileScren extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(
+            elevation: 0,
+            centerTitle: false,
+            titleSpacing: 20,
+            title: Text("Account settings",
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(color: Colors.white, fontSize: 22))),
         body: BlocProvider<ProfileBloc>(
           create: ((context) {
             final bloc = ProfileBloc();

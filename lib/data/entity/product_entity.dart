@@ -8,6 +8,7 @@ class ProdcutSort {
   final String mensclothing = "men's clothing";
   final String womensclothing = "women's clothing";
   final String allProduct = "products";
+  final String allCart = "carts";
 }
 
 @HiveType(typeId: 5)

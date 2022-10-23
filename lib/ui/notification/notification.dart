@@ -27,7 +27,7 @@ class NotificationScren extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(color: Colors.white, fontSize: 25),
+                  .copyWith(color: Colors.white, fontSize: 22),
             ),
             actions: [
               Padding(

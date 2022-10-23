@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:online_shop/data/common/http_validate_respone.dart';
-import 'package:online_shop/data/entity/cart.dart';
+import 'package:online_shop/data/entity/cart_respone.dart';
+import 'package:online_shop/data/entity/product_entity.dart';
 
 abstract class ICartRemoteDataSource {
   Future<void> addToCart();
@@ -19,10 +20,14 @@ class CartRemoteDataSource
 
   @override
   Future<List<CartEntity>> getallCart() async {
-    final respone = await httpClient.get('carts');
-    validateRespone(respone.data);
+    final respone = await httpClient.get(ProdcutSort().allCart);
+    validateRespone(respone);
+    List<CartEntity> cartRespone = [];
 
-    List<CartEntity> cart = [];
-    return cart;
+    for (var data in (respone.data as List)) {
+      cartRespone.add(CartEntity.fromJson(data));
+    }
+
+    return cartRespone;
   }
 }

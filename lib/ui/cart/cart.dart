@@ -6,8 +6,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:online_shop/common/utils.dart';
 import 'package:online_shop/data/entity/product_entity.dart';
-import 'package:online_shop/data/repo/local/product_local_repository.dart';
+
 import 'package:online_shop/data/repo/remote/auth_repository.dart';
+import 'package:online_shop/data/repo/remote/cart_repository.dart';
 import 'package:online_shop/ui/auth/auth.dart';
 import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
 import 'package:online_shop/ui/widgets/empty_state.dart';
@@ -59,12 +60,12 @@ class _CartScrenState extends State<CartScren> {
           style: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(color: Colors.white, fontSize: 24),
+              .copyWith(color: Colors.white, fontSize: 22),
         ),
       ),
       body: BlocProvider<CartBloc>(
         create: ((context) {
-          final bloc = CartBloc(productLocalRepository);
+          final bloc = CartBloc(cartRepository);
           cartBloc = bloc;
 
           stateStreamSubscription = bloc.stream.listen((state) {
@@ -124,7 +125,7 @@ class _CartScrenState extends State<CartScren> {
               child: ListView.builder(
                   itemCount: state.allProductsCart.length,
                   itemBuilder: (context, index) {
-                    return _ItemCart(state.allProductsCart[index]);
+                    return Container();
                   }),
             );
           } else if (state is CartIsEmpty) {
