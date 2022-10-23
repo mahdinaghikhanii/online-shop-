@@ -3,10 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import 'package:online_shop/ui/auth/bloc/auth_bloc.dart';
+import 'package:online_shop/ui/widgets/loading_state.dart';
 
 class AuthScrean extends StatelessWidget {
-  final TextEditingController passwordController = TextEditingController();
-  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController =
+      TextEditingController(text: "83r5^_");
+  final TextEditingController emailController =
+      TextEditingController(text: "mor_2314");
   AuthScrean({super.key});
 
   @override
@@ -85,17 +88,29 @@ class AuthScrean extends StatelessWidget {
                           onBackground: Colors.white,
                           controller: passwordController),
                       const SizedBox(height: 30),
-                      ElevatedButton(
-                          onPressed: () {
-                            BlocProvider.of<AuthBloc>(context).add(
-                                AuthButtonIsClicked(emailController.text,
-                                    passwordController.text));
-                          },
-                          child: Text(
-                            state.isLoginMode ? "Login" : "SignUp",
-                            style:
-                                TextStyle(color: Colors.white.withOpacity(0.4)),
-                          )),
+                      BlocBuilder<AuthBloc, AuthState>(
+                        builder: ((context, state) {
+                          if (state is AuthLoading) {
+                            return const LoadingState();
+                          } else if (state is AuthInitial ||
+                              state is AuthSuccess ||
+                              state is AuthError) {
+                            return ElevatedButton(
+                                onPressed: () {
+                                  BlocProvider.of<AuthBloc>(context).add(
+                                      AuthButtonIsClicked(emailController.text,
+                                          passwordController.text));
+                                },
+                                child: Text(
+                                  state.isLoginMode ? "Login" : "SignUp",
+                                  style: TextStyle(
+                                      color: Colors.white.withOpacity(0.4)),
+                                ));
+                          } else {
+                            throw "Bad state";
+                          }
+                        }),
+                      ),
                       const SizedBox(height: 20),
                       GestureDetector(
                         onTap: () {
@@ -115,10 +130,14 @@ class AuthScrean extends StatelessWidget {
                                   .textTheme
                                   .titleLarge!
                                   .copyWith(fontSize: 14),
-                            )
+                            ),
                           ],
                         ),
-                      )
+                      ),
+                      const SizedBox(height: 20),
+                      Text(state.isLoginMode
+                          ? " "
+                          : "register its not working !")
                     ],
                   ),
                 ),
