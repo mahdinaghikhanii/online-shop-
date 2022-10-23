@@ -55,20 +55,15 @@ class HorizontalListView extends StatelessWidget {
                             left: 68,
                             right: 0,
                             bottom: 10,
-                            child: InkWell(
-                              onTap: () => BlocProvider.of<CartBloc>(context)
-                                  .add(CartAddProducts()),
-                              child: Container(
-                                height: 30,
-                                width: 30,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color:
-                                        Theme.of(context).colorScheme.primary),
-                                child: const Icon(
-                                  CupertinoIcons.cart,
-                                  size: 16,
-                                ),
+                            child: Container(
+                              height: 30,
+                              width: 30,
+                              decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: Theme.of(context).colorScheme.primary),
+                              child: const Icon(
+                                CupertinoIcons.cart,
+                                size: 16,
                               ),
                             )),
                       ],
