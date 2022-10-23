@@ -1,9 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_shop/common/http_client.dart';
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
-import 'package:online_shop/data/source/remote/auth_data_source.dart';
 import 'package:online_shop/ui/notification/notification.dart';
+import 'package:online_shop/ui/profile/profile.dart';
 import 'cart/cart.dart';
 
 import 'home/home.dart';
@@ -63,22 +61,7 @@ class _RootScreanState extends State<RootScrean> {
             children: [
               _navigator(_homeKey, homeIndex, const HomeScrean()),
               _navigator(_cartKey, cartIndex, const CartScren()),
-              _navigator(
-                  _profileKey,
-                  profileIndex,
-                  Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ElevatedButton(
-                            onPressed: () {
-                              AuthRepository(RemoteAuthDataSource(httpClients))
-                                  .singOut();
-                            },
-                            child: const Text('خروج'))
-                      ],
-                    ),
-                  )),
+              _navigator(_profileKey, profileIndex, const ProfileScren()),
               _navigator(
                   _notifactionKey, notifactionIndex, const NotificationScren()),
             ],

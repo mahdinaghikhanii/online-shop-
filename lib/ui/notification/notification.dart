@@ -44,11 +44,13 @@ class NotificationScren extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Row(
                   children: [
-                    const SizedBox(
+                    SizedBox(
                       height: 80,
                       width: 80,
                       child: LocalImageService(
                         localImageAddres: "assets/img/logo.png",
+                        borderRadius: BorderRadius.circular(12),
+                        imageSvgOrAnutherVersion: false,
                       ),
                     ),
                     const SizedBox(width: 10),

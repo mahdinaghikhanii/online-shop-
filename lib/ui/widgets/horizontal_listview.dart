@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
 import 'package:online_shop/ui/products/details..dart';
 
 import '../../data/entity/product_entity.dart';
