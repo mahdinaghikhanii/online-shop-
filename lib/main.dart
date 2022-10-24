@@ -1,11 +1,13 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hive_flutter/adapters.dart';
-import 'data/entity/product_entity.dart';
+import 'package:online_shop/data/entity/product_entity.dart';
 
-import 'data/repo/remote/auth_repository.dart';
+import 'package:online_shop/data/repo/remote/auth_repository.dart';
+import 'firebase_options.dart';
 import 'ui/root.dart';
 
 import 'theme.dart';
@@ -13,12 +15,15 @@ import 'theme.dart';
 const producBoxName = "product_cart_box";
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   Hive.registerAdapter(ProductEntityAdapter());
   Hive.registerAdapter(RatingEntityAdapter());
   await Hive.openBox<ProductEntity>(producBoxName);
   await authRepository.loadInfo();
-
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 
