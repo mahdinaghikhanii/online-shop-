@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
-import 'package:online_shop/data/source/local/product_local_data_source.dart';
+import '../../entity/product_entity.dart';
+import '../../source/local/product_local_data_source.dart';
 
 final productLocalRepository = ProductLocalRepository(
     ProductLocalDataSource(Hive.box("product_cart_box")));

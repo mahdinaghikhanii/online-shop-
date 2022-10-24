@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/common/exception.dart';
-import 'package:online_shop/data/entity/auth.dart';
-import 'package:online_shop/data/entity/cart_respone.dart';
+import '../../../common/exception.dart';
+import '../../../data/entity/auth.dart';
+import '../../../data/entity/cart_respone.dart';
 
-import 'package:online_shop/data/repo/remote/cart_repository.dart';
+import '../../../data/repo/remote/cart_repository.dart';
 
 part 'cart_event.dart';
 part 'cart_state.dart';

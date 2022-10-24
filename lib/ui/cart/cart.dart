@@ -4,17 +4,17 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:online_shop/common/utils.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
+import '../../common/utils.dart';
+import '../../data/entity/product_entity.dart';
 
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
-import 'package:online_shop/data/repo/remote/cart_repository.dart';
-import 'package:online_shop/ui/auth/auth.dart';
-import 'package:online_shop/ui/cart/bloc/cart_bloc.dart';
-import 'package:online_shop/ui/widgets/empty_state.dart';
+import '../../data/repo/remote/auth_repository.dart';
+import '../../data/repo/remote/cart_repository.dart';
+import '../auth/auth.dart';
+import 'bloc/cart_bloc.dart';
+import '../widgets/empty_state.dart';
 
-import 'package:online_shop/ui/widgets/image_remote.dart';
-import 'package:online_shop/ui/widgets/loading_state.dart';
+import '../widgets/image_remote.dart';
+import '../widgets/loading_state.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class CartScren extends StatefulWidget {

@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
-import 'package:online_shop/main.dart';
+import '../../entity/product_entity.dart';
+import '../../../main.dart';
 
 abstract class IProductLocalDataSource<T> {
   Future<List<T>> getAllProduct();

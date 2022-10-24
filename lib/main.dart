@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hive_flutter/adapters.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
+import 'data/entity/product_entity.dart';
 
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
+import 'data/repo/remote/auth_repository.dart';
 import 'ui/root.dart';
 
 import 'theme.dart';

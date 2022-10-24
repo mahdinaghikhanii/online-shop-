@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:online_shop/data/repo/remote/product_repository.dart';
+import '../../data/repo/remote/product_repository.dart';
 import 'bloc/callaction_bloc.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/loading_state.dart';

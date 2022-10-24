@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
-import 'package:online_shop/ui/profile/bloc/profile_bloc.dart';
-import 'package:online_shop/ui/widgets/empty_state.dart';
-import 'package:online_shop/ui/widgets/image_local.dart';
-import 'package:online_shop/ui/widgets/loading_state.dart';
+import '../../data/repo/remote/auth_repository.dart';
+import 'bloc/profile_bloc.dart';
+import '../widgets/empty_state.dart';
+import '../widgets/image_local.dart';
+import '../widgets/loading_state.dart';
 
 import '../auth/auth.dart';
 
@@ -64,11 +64,33 @@ class ProfileScren extends StatelessWidget {
             } else if (state is ProfileLoading) {
               return const LoadingState();
             } else if (state is ProfileSuccess) {
-              return Container();
+              return ListView.builder(itemBuilder: ((context, index) {
+                return Container();
+              }));
             } else {
               throw "We  have problems";
             }
           })),
         ));
+  }
+}
+
+class _ProfileSettingsItem extends StatelessWidget {
+  final IconData iconData;
+  final String title;
+  const _ProfileSettingsItem({required this.iconData, required this.title});
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        ListTile(
+          leading: Icon(iconData),
+          title: Text(title),
+        ),
+        const SizedBox(height: 8),
+        const Divider(thickness: 1)
+      ],
+    );
   }
 }

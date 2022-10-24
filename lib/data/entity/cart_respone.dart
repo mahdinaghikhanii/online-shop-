@@ -1,4 +1,4 @@
-import 'package:online_shop/data/entity/cart_item.dart';
+import 'cart_item.dart';
 
 class CartEntity {
   int id;

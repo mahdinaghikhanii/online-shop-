@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/widgets.dart';
-import 'package:online_shop/data/common/http_validate_respone.dart';
-import 'package:online_shop/data/entity/auth.dart';
+import '../../common/http_validate_respone.dart';
+import '../../entity/auth.dart';
 
 abstract class IRemoteAuthDataSource {
   Future<AuthEntity> login(String email, String password);

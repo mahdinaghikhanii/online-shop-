@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/common/exception.dart';
+import '../../../common/exception.dart';
 
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
+import '../../../data/repo/remote/auth_repository.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

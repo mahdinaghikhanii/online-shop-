@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/common/exception.dart';
+import '../../../common/exception.dart';
 
 part 'notification_event.dart';
 part 'notification_state.dart';

@@ -1,7 +1,7 @@
-import 'package:online_shop/common/http_client.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
+import '../../../common/http_client.dart';
+import '../../entity/product_entity.dart';
 
-import 'package:online_shop/data/source/remote/product_data_source.dart';
+import '../../source/remote/product_data_source.dart';
 
 final productRepository =
     ProductRepository(ProdcutRemoteDataSource(httpClients));

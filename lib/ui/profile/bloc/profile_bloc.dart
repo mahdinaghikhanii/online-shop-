@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/data/entity/auth.dart';
+import '../../../data/entity/auth.dart';
 
 part 'profile_event.dart';
 part 'profile_state.dart';

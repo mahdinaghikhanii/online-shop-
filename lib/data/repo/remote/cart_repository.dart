@@ -1,6 +1,6 @@
-import 'package:online_shop/common/http_client.dart';
-import 'package:online_shop/data/entity/cart_respone.dart';
-import 'package:online_shop/data/source/remote/cart_data_source.dart';
+import '../../../common/http_client.dart';
+import '../../entity/cart_respone.dart';
+import '../../source/remote/cart_data_source.dart';
 
 final cartRepository = CartRepository(CartRemoteDataSource(httpClients));
 

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/ui/notification/bloc/notification_bloc.dart';
-import 'package:online_shop/ui/widgets/image_local.dart';
+import 'bloc/notification_bloc.dart';
+import '../widgets/image_local.dart';
 
 class NotificationScren extends StatelessWidget {
   const NotificationScren({super.key});

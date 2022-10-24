@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:online_shop/ui/notification/notification.dart';
-import 'package:online_shop/ui/profile/profile.dart';
+import 'notification/notification.dart';
+import 'profile/profile.dart';
 import 'cart/cart.dart';
 
 import 'home/home.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
-import 'package:online_shop/ui/auth/bloc/auth_bloc.dart';
-import 'package:online_shop/ui/widgets/loading_state.dart';
+import '../../data/repo/remote/auth_repository.dart';
+import 'bloc/auth_bloc.dart';
+import '../widgets/loading_state.dart';
 
 class AuthScrean extends StatelessWidget {
   final TextEditingController passwordController =
