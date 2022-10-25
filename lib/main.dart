@@ -1,12 +1,13 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hive_flutter/adapters.dart';
 import 'package:online_shop/data/entity/product_entity.dart';
-
 import 'package:online_shop/data/repo/remote/auth_repository.dart';
+import 'package:online_shop/data/source/remote/cloud_messaging_data_source.dart';
 import 'firebase_options.dart';
 import 'ui/root.dart';
 
@@ -24,6 +25,10 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  final fcmToken = await FirebaseMessaging.instance.getToken();
+  FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandlers);
+  debugPrint("this is token :  $fcmToken");
   runApp(const MyApp());
 }
 
