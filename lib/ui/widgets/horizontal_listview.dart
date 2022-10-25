@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../products/details..dart';
 
-import '../../data/entity/product_entity.dart';
-import 'image_remote.dart';
 import '../../common/utils.dart';
+import '../../data/entity/product_entity.dart';
+import '../products/details..dart';
+import 'image_remote.dart';
 
 class HorizontalListView extends StatelessWidget {
   final List<ProductEntity> productEntity;

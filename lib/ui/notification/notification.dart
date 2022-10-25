@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bloc/notification_bloc.dart';
+
 import '../widgets/image_local.dart';
+import 'bloc/notification_bloc.dart';
 
 class NotificationScren extends StatelessWidget {
   const NotificationScren({super.key});
@@ -27,7 +28,7 @@ class NotificationScren extends StatelessWidget {
               style: Theme.of(context)
                   .textTheme
                   .titleLarge!
-                  .copyWith(color: Colors.white, fontSize: 22),
+                  .copyWith(color: Colors.white, fontSize: 20),
             ),
             actions: [
               Padding(

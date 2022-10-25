@@ -5,9 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'package:hive_flutter/adapters.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
-import 'package:online_shop/data/source/remote/cloud_messaging_data_source.dart';
+import 'data/entity/product_entity.dart';
+import 'data/repo/remote/auth_repository.dart';
+import 'data/source/remote/cloud_messaging_data_source.dart';
 import 'firebase_options.dart';
 import 'ui/root.dart';
 
@@ -22,13 +22,8 @@ void main() async {
   Hive.registerAdapter(RatingEntityAdapter());
   await Hive.openBox<ProductEntity>(producBoxName);
   await authRepository.loadInfo();
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  final fcmToken = await FirebaseMessaging.instance.getToken();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   FirebaseMessaging.onBackgroundMessage(firebaseMessagingBackgroundHandlers);
-  debugPrint("this is token :  $fcmToken");
   runApp(const MyApp());
 }
 

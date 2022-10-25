@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import '../../../common/http_client.dart';
 import '../../entity/auth.dart';
-
 import '../../source/remote/auth_data_source.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 final authRepository = AuthRepository(RemoteAuthDataSource(httpClients));
 

@@ -60,7 +60,7 @@ class _CartScrenState extends State<CartScren> {
           style: Theme.of(context)
               .textTheme
               .titleLarge!
-              .copyWith(color: Colors.white, fontSize: 22),
+              .copyWith(color: Colors.white, fontSize: 20),
         ),
       ),
       body: BlocProvider<CartBloc>(
@@ -82,35 +82,30 @@ class _CartScrenState extends State<CartScren> {
         }),
         child: BlocBuilder<CartBloc, CartState>(builder: ((context, state) {
           if (state is CartAuthReaurid) {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Center(
-                  child: EmptyState(
-                      image: SvgPicture.asset(
-                        "assets/svg/auth.svg",
-                        width: 250,
-                        height: 250,
-                      ),
-                      text: "Please create account or login",
-                      buttonClicked: ElevatedButton(
-                          style: ButtonStyle(
-                              backgroundColor: MaterialStateProperty.all(
-                                  Theme.of(context).colorScheme.secondary)),
-                          onPressed: () {
-                            Navigator.of(context, rootNavigator: true).push(
-                                MaterialPageRoute(
-                                    builder: ((context) => AuthScrean())));
-                          },
-                          child: Text(
-                            "Login or signup",
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(color: Colors.white.withOpacity(0.4)),
-                          ))),
-                )
-              ],
+            return Center(
+              child: EmptyState(
+                  image: SvgPicture.asset(
+                    "assets/svg/auth.svg",
+                    width: 200,
+                    height: 200,
+                  ),
+                  text: "Please create account or login",
+                  buttonClicked: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(
+                              Theme.of(context).colorScheme.secondary)),
+                      onPressed: () {
+                        Navigator.of(context, rootNavigator: true).push(
+                            MaterialPageRoute(
+                                builder: ((context) => AuthScrean())));
+                      },
+                      child: Text(
+                        "Login or signup",
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyMedium!
+                            .copyWith(color: Colors.white.withOpacity(0.4)),
+                      ))),
             );
           } else if (state is CartLoading) {
             return const LoadingState();
@@ -134,6 +129,7 @@ class _CartScrenState extends State<CartScren> {
                   image: SvgPicture.asset(
                     "assets/svg/empty_cart.svg",
                     width: 200,
+                    height: 200,
                   ),
                   text: "Your cart is empty",
                   buttonClicked: Container()),

@@ -22,7 +22,8 @@ class EmptyState extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             text,
-            style: Theme.of(context).textTheme.titleLarge,
+            style:
+                Theme.of(context).textTheme.titleLarge!.copyWith(fontSize: 18),
             textAlign: TextAlign.center,
           ),
         ),

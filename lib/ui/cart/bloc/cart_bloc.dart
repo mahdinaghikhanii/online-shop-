@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../common/exception.dart';
 import '../../../data/entity/auth.dart';
 import '../../../data/entity/cart_respone.dart';
-
 import '../../../data/repo/remote/cart_repository.dart';
 
 part 'cart_event.dart';

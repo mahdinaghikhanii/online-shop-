@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import '../products/details..dart';
-import '../../common/utils.dart';
-import '../../data/entity/product_entity.dart';
-
-import 'image_remote.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_grid_view.dart';
 import 'package:staggered_grid_view_flutter/widgets/staggered_tile.dart';
+
+import '../../common/utils.dart';
+import '../../data/entity/product_entity.dart';
+import '../products/details..dart';
+import 'image_remote.dart';
 
 class StaggeredGridViewsWidgets extends StatelessWidget {
   final List<ProductEntity> products;
