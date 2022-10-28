@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:online_shop/ui/settings/settings.dart';
 import 'notification/notification.dart';
-import 'profile/profile.dart';
+
 import 'cart/cart.dart';
 
 import 'home/home.dart';
@@ -61,7 +62,7 @@ class _RootScreanState extends State<RootScrean> {
             children: [
               _navigator(_homeKey, homeIndex, const HomeScrean()),
               _navigator(_cartKey, cartIndex, const CartScren()),
-              _navigator(_profileKey, profileIndex, const ProfileScren()),
+              _navigator(_profileKey, profileIndex, const SettingsScren()),
               _navigator(
                   _notifactionKey, notifactionIndex, const NotificationScren()),
             ],
@@ -83,7 +84,7 @@ class _RootScreanState extends State<RootScrean> {
                 BottomNavigationBarItem(
                     icon: Icon(CupertinoIcons.cart), label: "Cart"),
                 BottomNavigationBarItem(
-                    icon: Icon(CupertinoIcons.person), label: "Profile"),
+                    icon: Icon(CupertinoIcons.settings), label: "Settings"),
                 BottomNavigationBarItem(
                     icon: Icon(CupertinoIcons.location_north_fill),
                     label: "Notification"),

@@ -52,7 +52,7 @@ class MyApp extends StatelessWidget {
           colorScheme: const ColorScheme.light(
               secondary: LightThemeColors.secondaryColor,
               primary: LightThemeColors.primariColor,
-              onPrimary: LightThemeColors.scafoldBackgroundColro)),
+              onPrimary: LightThemeColors.primaryTextColor)),
       home: const RootScrean(),
     );
   }

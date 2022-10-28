@@ -1,19 +1,20 @@
 import 'package:hive/hive.dart';
 import '../../entity/product_entity.dart';
-import '../../source/local/product_local_data_source.dart';
+import '../../source/local/favorite_product_local_data_source.dart';
 
-final productLocalRepository = ProductLocalRepository(
-    ProductLocalDataSource(Hive.box("product_cart_box")));
+final favoriteproductLocalRepository = FavoriteProductLocalRepository(
+    FavoriteProductLocalDataSource(Hive.box("product_cart_box")));
 
-abstract class IProductLocalRepository<T> {
+abstract class IFavoriteProductLocalRepository<T> {
   Future<List<T>> getAllProduct();
   Future<T> addProducts(T productEntity);
   Future<void> deleteProduct(int idProduct);
 }
 
-class ProductLocalRepository implements IProductLocalRepository<ProductEntity> {
-  ProductLocalDataSource dataSource;
-  ProductLocalRepository(this.dataSource);
+class FavoriteProductLocalRepository
+    implements IFavoriteProductLocalRepository<ProductEntity> {
+  FavoriteProductLocalDataSource dataSource;
+  FavoriteProductLocalRepository(this.dataSource);
 
   @override
   Future<ProductEntity> addProducts(ProductEntity productEntity) {

@@ -35,7 +35,6 @@ import 'package:flutter/material.dart'
         Theme,
         Widget;
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/data/repo/local/product_local_repository.dart';
 import 'package:online_shop/ui/products/bloc/details_bloc.dart';
 import 'package:online_shop/ui/widgets/loading_state.dart';
 
@@ -51,7 +50,7 @@ class ProductDetailsScren extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<DetailsBloc>(
       create: (BuildContext context) {
-        final bloc = DetailsBloc(productLocalRepository);
+        final bloc = DetailsBloc();
 
         bloc.stream.listen((state) {
           if (state is DetailsAddToCartSuccess) {

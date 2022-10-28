@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:online_shop/data/repo/remote/auth_repository.dart';
 import '../../data/repo/remote/product_category_repository.dart';
 import '../../data/repo/remote/product_repository.dart';
 import '../../data/entity/product_entity.dart';
@@ -56,22 +57,38 @@ class HomeScrean extends StatelessWidget {
                                   ),
                                 ],
                               ),
-                              const SizedBox(height: 16),
-                              Text(
-                                "Welcome",
-                                style: Theme.of(context).textTheme.titleMedium,
-                              ),
-                              Text(
-                                "zimro store!",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .titleLarge!
-                                    .copyWith(
-                                        fontWeight: FontWeight.bold,
-                                        color: Colors.white,
-                                        fontSize: 24,
-                                        wordSpacing: 2),
-                              ),
+                              const SizedBox(height: 14),
+                              ValueListenableBuilder(
+                                  valueListenable:
+                                      AuthRepository.authChangeNotifire,
+                                  builder: ((context, auhtState, child) {
+                                    if (auhtState == null ||
+                                        auhtState.token.isEmpty) {
+                                      return Column(
+                                        children: [
+                                          Text(
+                                            "Welcome",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleMedium,
+                                          ),
+                                          Text(
+                                            "zimro store!",
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge!
+                                                .copyWith(
+                                                    fontWeight: FontWeight.bold,
+                                                    color: Colors.white,
+                                                    fontSize: 24,
+                                                    wordSpacing: 2),
+                                          ),
+                                        ],
+                                      );
+                                    } else {
+                                      return Container();
+                                    }
+                                  }))
                             ],
                           ),
                         );
