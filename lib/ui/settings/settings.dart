@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:online_shop/ui/favorite/favorite.dart';
+import 'package:online_shop/ui/settings/feedback/giveus_feedback.dart';
 
 import '../../data/repo/remote/auth_repository.dart';
 
@@ -79,7 +80,10 @@ class SettingsScren extends StatelessWidget {
             _ProfileSettingsItem(
                 iconData: Icons.feed_outlined,
                 title: "Give us feedback",
-                ontap: () {}),
+                ontap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) => const GiveUsFeedBack())));
+                }),
           ],
         ));
   }

@@ -9,6 +9,7 @@ class ProdcutSort {
   final String womensclothing = "women's clothing";
   final String allProduct = "products";
   final String allCart = "carts";
+  final String emailSendGiveUsFeedBack = 'api/v1.0/email/send';
 }
 
 @HiveType(typeId: 5)

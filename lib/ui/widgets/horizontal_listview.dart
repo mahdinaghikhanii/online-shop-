@@ -72,15 +72,20 @@ class HorizontalListView extends StatelessWidget {
                                             )));
                                   } else if (state
                                       is FavoriteFailedUpadteFavorite) {
-                                    ScaffoldMessenger.of(context)
-                                        .showSnackBar(SnackBar(
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            backgroundColor: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
                                             content: Text(
-                                      state.appException.exceptionMessage,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall!
-                                          .copyWith(color: Colors.black),
-                                    )));
+                                              state.appException
+                                                  .exceptionMessage,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .copyWith(
+                                                      color: Colors.black),
+                                            )));
                                   }
                                 });
                                 return bloc;

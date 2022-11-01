@@ -19,16 +19,10 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         }
       } else if (event is FavoriteButtonUpdateProduct) {
         try {
-          final successState = (state as FavoriteSuccess);
-          final index = successState.product.indexWhere(
-              (element) => element.id == successState.product.length);
-          successState.product[index].addToFavoriteLoading = true;
-
           await Future.delayed(const Duration(seconds: 2));
-
           await favoriteProductLocalRepository.addProducts(event.productEntity);
           emit(FavoriteSuccessUpdateFavorite());
-          successState.product[index].addToFavoriteLoading = false;
+
           await loadCartItems(emit);
         } catch (e) {
           emit(FavoriteFailedUpadteFavorite(AppException()));
