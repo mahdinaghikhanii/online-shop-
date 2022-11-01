@@ -19,6 +19,8 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         }
       } else if (event is FavoriteButtonUpdateProduct) {
         try {
+          emit(FavoriteLoading());
+          await Future.delayed(const Duration(seconds: 2));
           await favoriteProductLocalRepository.addProducts(event.productEntity);
           emit(FavoriteSuccessUpdateFavorite());
           await loadCartItems(emit);

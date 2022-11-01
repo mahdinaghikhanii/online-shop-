@@ -28,9 +28,9 @@ class FavoriteProductLocalDataSource
   @override
   Future<ProductEntity> addProducts(ProductEntity productEntity) async {
     if (box.containsKey(productEntity.id)) {
-      await box.delete(producBoxName);
+      await box.delete(productEntity.id);
     } else {
-      await box.add(productEntity);
+      await box.put(productEntity.id, productEntity);
     }
     return productEntity;
   }

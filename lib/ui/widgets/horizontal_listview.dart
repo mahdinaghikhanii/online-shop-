@@ -63,12 +63,12 @@ class HorizontalListView extends StatelessWidget {
                                                 .colorScheme
                                                 .primary,
                                             content: Text(
-                                              "Adding your favorite !",
+                                              "mission accomplished",
                                               style: Theme.of(context)
                                                   .textTheme
                                                   .titleSmall!
                                                   .copyWith(
-                                                      color: Colors.white),
+                                                      color: Colors.black),
                                             )));
                                   } else if (state
                                       is FavoriteFailedUpadteFavorite) {
@@ -79,7 +79,7 @@ class HorizontalListView extends StatelessWidget {
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall!
-                                          .copyWith(color: Colors.white),
+                                          .copyWith(color: Colors.black),
                                     )));
                                   }
                                 });
@@ -90,7 +90,7 @@ class HorizontalListView extends StatelessWidget {
                                   return IconButton(
                                       onPressed: () {
                                         BlocProvider.of<FavoriteBloc>(context)
-                                            .add(FavoriteButtonDeleteProduct(
+                                            .add(FavoriteButtonUpdateProduct(
                                                 productEntity[index]));
                                       },
                                       icon: state is FavoriteLoading
