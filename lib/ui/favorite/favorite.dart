@@ -81,9 +81,25 @@ class FavoriteScreen extends StatelessWidget {
                 buttonClicked: Container());
           } else if (state is FavoriteSuccess) {
             return ListView.builder(
-                itemCount: state.product.length,
+                itemCount: state.product.length + 1,
                 itemBuilder: ((context, index) {
-                  return _ItemFavoriteProduct(state.product[index]);
+                  if (index < state.product.length) {
+                    final data = state.product[index];
+                    return _ItemFavoriteProduct(data);
+                  } else {
+                    return Column(
+                      children: [
+                        const SizedBox(height: 10),
+                        Center(
+                            child: Text("All product Saving\nLocal storage !",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .primary))),
+                      ],
+                    );
+                  }
                 }));
           } else {
             throw "Bad state";
