@@ -1,5 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:online_shop/data/repo/local/favorite_product_local_repository.dart';
+import 'package:online_shop/ui/favorite/bloc/favorite_bloc.dart';
+import 'package:online_shop/ui/widgets/loading_state.dart';
 
 import '../../common/utils.dart';
 import '../../data/entity/product_entity.dart';
@@ -46,9 +50,55 @@ class HorizontalListView extends StatelessWidget {
                             left: 60,
                             right: 0,
                             top: 0,
-                            child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.favorite_border))),
+                            child: BlocProvider(
+                              create: (BuildContext context) {
+                                final bloc = FavoriteBloc(
+                                    favoriteproductLocalRepository);
+                                bloc.add(FavoriteStarted());
+                                bloc.stream.listen((state) {
+                                  if (state is FavoriteSuccessUpdateFavorite) {
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                        SnackBar(
+                                            backgroundColor: Theme.of(context)
+                                                .colorScheme
+                                                .primary,
+                                            content: Text(
+                                              "Adding your favorite !",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall!
+                                                  .copyWith(
+                                                      color: Colors.white),
+                                            )));
+                                  } else if (state
+                                      is FavoriteFailedUpadteFavorite) {
+                                    ScaffoldMessenger.of(context)
+                                        .showSnackBar(SnackBar(
+                                            content: Text(
+                                      state.appException.exceptionMessage,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall!
+                                          .copyWith(color: Colors.white),
+                                    )));
+                                  }
+                                });
+                                return bloc;
+                              },
+                              child: BlocBuilder<FavoriteBloc, FavoriteState>(
+                                builder: (BuildContext context, state) {
+                                  return IconButton(
+                                      onPressed: () {
+                                        BlocProvider.of<FavoriteBloc>(context)
+                                            .add(FavoriteButtonDeleteProduct(
+                                                productEntity[index]));
+                                      },
+                                      icon: state is FavoriteLoading
+                                          ? const LoadingState()
+                                          : const Icon(Icons.favorite_border));
+                                },
+                              ),
+                            )),
                         Positioned(
                             left: 68,
                             right: 0,

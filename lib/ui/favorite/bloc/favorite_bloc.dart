@@ -13,14 +13,29 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     on<FavoriteEvent>((event, emit) async {
       if (event is FavoriteStarted) {
         try {
-          emit(FavoriteLoading());
-          final favoriteProduct =
-              await favoriteProductLocalRepository.getAllProduct();
-          emit(FavoriteSuccess(favoriteProduct));
+          loadCartItems(emit);
         } catch (e) {
           emit(FavoriteFailed(AppException()));
         }
+      } else if (event is FavoriteButtonUpdateProduct) {
+        try {
+          await favoriteProductLocalRepository.addProducts(event.productEntity);
+          emit(FavoriteSuccessUpdateFavorite());
+          await loadCartItems(emit);
+        } catch (e) {
+          emit(FavoriteFailedUpadteFavorite(AppException()));
+        }
       }
     });
+  }
+  Future<void> loadCartItems(Emitter<FavoriteState> emit) async {
+    emit(FavoriteLoading());
+    final favoriteProduct =
+        await favoriteProductLocalRepository.getAllProduct();
+    if (favoriteProduct.isEmpty) {
+      emit(FavoriteEmpty());
+    } else {
+      emit(FavoriteSuccess(favoriteProduct));
+    }
   }
 }
