@@ -1,12 +1,11 @@
 import 'package:hive/hive.dart';
 
-import '../../../main.dart';
 import '../../entity/product_entity.dart';
 
 abstract class IFavoriteProductLocalDataSource<T> {
   Future<List<T>> getAllProduct();
   Future<T> addProducts(T productEntity);
-  Future<void> deleteProduct(int idProduct);
+  Future<void> deleteProduct();
 }
 
 class FavoriteProductLocalDataSource
@@ -15,8 +14,8 @@ class FavoriteProductLocalDataSource
   FavoriteProductLocalDataSource(this.box);
 
   @override
-  Future<void> deleteProduct(int idProduct) {
-    return box.delete(idProduct);
+  Future<void> deleteProduct() {
+    return box.clear();
   }
 
   @override

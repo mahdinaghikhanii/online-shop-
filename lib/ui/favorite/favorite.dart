@@ -19,6 +19,26 @@ class FavoriteScreen extends StatelessWidget {
       appBar: AppBar(
           elevation: 0,
           centerTitle: false,
+          actions: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: ValueListenableBuilder(
+                builder: (BuildContext context, value, Widget? child) {
+                  if (value == 0) {
+                    return const SizedBox();
+                  } else {
+                    return TextButton(
+                        onPressed: () {
+                          BlocProvider.of<FavoriteBloc>(context)
+                              .add(const FavoriteButtonDeleteProduct());
+                        },
+                        child: const Text("Delete all"));
+                  }
+                },
+                valueListenable: FavoriteProductLocalRepository.countFavorite,
+              ),
+            )
+          ],
           titleSpacing: 20,
           title: Text("Wishlist",
               style: Theme.of(context)

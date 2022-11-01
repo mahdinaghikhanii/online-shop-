@@ -27,6 +27,8 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         } catch (e) {
           emit(FavoriteFailedUpadteFavorite(AppException()));
         }
+      } else if (event is FavoriteButtonDeleteProduct) {
+        favoriteProductLocalRepository.deleteProduct();
       }
     });
   }

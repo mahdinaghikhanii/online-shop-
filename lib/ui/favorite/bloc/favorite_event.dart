@@ -18,9 +18,5 @@ class FavoriteButtonUpdateProduct extends FavoriteEvent {
 }
 
 class FavoriteButtonDeleteProduct extends FavoriteEvent {
-  final ProductEntity productEntity;
-  @override
-  List<Object> get props => [productEntity];
-
-  const FavoriteButtonDeleteProduct(this.productEntity);
+  const FavoriteButtonDeleteProduct();
 }
