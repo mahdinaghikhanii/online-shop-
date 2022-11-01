@@ -28,7 +28,7 @@ class ProductEntity extends HiveObject {
   @HiveField(6)
   RatingEntity ratingEntity;
 
-  bool addtoCartLoading = false;
+  bool addToFavoriteLoading = false;
 
   ProductEntity(this.category, this.description, this.id, this.image,
       this.price, this.ratingEntity, this.title);
