@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
-import 'package:online_shop/common/http_client.dart';
+
 import 'package:online_shop/data/common/http_validate_respone.dart';
 import 'package:online_shop/data/entity/product_entity.dart';
 
