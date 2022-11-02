@@ -19,8 +19,6 @@ class RemoteGiveUsFeedBackDataSource
   @override
   Future<int> sendGiveUsFeedBack(
       String email, String name, String subject, String message) async {
-    debugPrint(
-        "${httpClientsEmailSend} + ${ProdcutSort().emailSendGiveUsFeedBack}");
     final respone = await httpCliend.post(
       ProdcutSort().emailSendGiveUsFeedBack,
       data: json.encode({
@@ -29,7 +27,7 @@ class RemoteGiveUsFeedBackDataSource
         "user_id": "XZHT9xJ29pArXSCz2",
         "template_params": {
           "name": name,
-          "email": email,
+          "user_email": email,
           "subject": subject,
           "message": message
         }
