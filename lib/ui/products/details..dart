@@ -90,7 +90,7 @@ class ProductDetailsScren extends StatelessWidget {
                       ? const LoadingState()
                       : const Text(
                           "Add to cart",
-                          style: TextStyle(color: Colors.white),
+                          style: TextStyle(color: Colors.black),
                         )),
             )),
         body: SafeArea(

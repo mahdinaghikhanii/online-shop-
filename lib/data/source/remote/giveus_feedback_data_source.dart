@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:online_shop/common/http_client.dart';
 import 'package:online_shop/data/common/http_validate_respone.dart';
 import 'package:online_shop/data/entity/product_entity.dart';
 
@@ -17,20 +19,18 @@ class RemoteGiveUsFeedBackDataSource
   @override
   Future<int> sendGiveUsFeedBack(
       String email, String name, String subject, String message) async {
+    debugPrint(
+        "${httpClientsEmailSend} + ${ProdcutSort().emailSendGiveUsFeedBack}");
     final respone = await httpCliend.post(
       ProdcutSort().emailSendGiveUsFeedBack,
-      options: Options(headers: {
-        'origin': 'http://localhost',
-        'Content-Type': 'application/json'
-      }),
       data: json.encode({
         "service_id": "service_thha95k",
         "template_id": "template_u19u98f",
         "user_id": "XZHT9xJ29pArXSCz2",
         "template_params": {
           "name": name,
+          "email": email,
           "subject": subject,
-          "user_email": email,
           "message": message
         }
       }),

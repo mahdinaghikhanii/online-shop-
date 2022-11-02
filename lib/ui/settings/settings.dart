@@ -81,8 +81,9 @@ class SettingsScren extends StatelessWidget {
                 iconData: Icons.feed_outlined,
                 title: "Give us feedback",
                 ontap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => const GiveUsFeedBack())));
+                  Navigator.of(context, rootNavigator: true).push(
+                      MaterialPageRoute(
+                          builder: ((context) => const GiveUsFeedBack())));
                 }),
           ],
         ));
