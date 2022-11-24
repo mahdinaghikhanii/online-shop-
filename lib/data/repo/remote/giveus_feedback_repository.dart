@@ -1,5 +1,5 @@
-import 'package:online_shop/common/http_client.dart';
-import 'package:online_shop/data/source/remote/giveus_feedback_data_source.dart';
+import '../../../common/http_client.dart';
+import '../../source/remote/giveus_feedback_data_source.dart';
 
 final giveUsFeedBackReposioty = GiveUsFeedBackRepository(
     RemoteGiveUsFeedBackDataSource(httpClientsEmailSend));

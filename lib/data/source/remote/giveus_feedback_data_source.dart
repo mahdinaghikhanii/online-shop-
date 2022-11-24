@@ -2,8 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 
-import 'package:online_shop/data/common/http_validate_respone.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
+import '../../common/http_validate_respone.dart';
+import '../../entity/product_entity.dart';
 
 abstract class IRemoteGiveUsFeedBackDataSource {
   Future<int> sendGiveUsFeedBack(

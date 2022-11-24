@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:online_shop/data/repo/remote/auth_repository.dart';
+import '../../data/repo/remote/auth_repository.dart';
 import '../../data/repo/remote/product_category_repository.dart';
 import '../../data/repo/remote/product_repository.dart';
 import '../../data/entity/product_entity.dart';

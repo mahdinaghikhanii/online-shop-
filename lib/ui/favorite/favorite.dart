@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/common/utils.dart';
-import 'package:online_shop/ui/favorite/bloc/favorite_bloc.dart';
-import 'package:online_shop/ui/widgets/empty_state.dart';
-import 'package:online_shop/ui/widgets/image_local.dart';
-import 'package:online_shop/ui/widgets/loading_state.dart';
+import '../../common/utils.dart';
+import 'bloc/favorite_bloc.dart';
+import '../widgets/empty_state.dart';
+import '../widgets/image_local.dart';
+import '../widgets/loading_state.dart';
 
 import '../../data/entity/product_entity.dart';
 import '../../data/repo/local/favorite_product_local_repository.dart';

@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/common/exception.dart';
-import 'package:online_shop/data/entity/product_entity.dart';
-import 'package:online_shop/data/repo/local/favorite_product_local_repository.dart';
+import '../../../common/exception.dart';
+import '../../../data/entity/product_entity.dart';
+import '../../../data/repo/local/favorite_product_local_repository.dart';
 
 part 'favorite_event.dart';
 part 'favorite_state.dart';

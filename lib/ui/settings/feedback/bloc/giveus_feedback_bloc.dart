@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/common/exception.dart';
-import 'package:online_shop/data/repo/remote/giveus_feedback_repository.dart';
+import '../../../../common/exception.dart';
+import '../../../../data/repo/remote/giveus_feedback_repository.dart';
 
 part 'giveus_feedback_event.dart';
 part 'giveus_feedback_state.dart';

@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/data/repo/local/favorite_product_local_repository.dart';
-import 'package:online_shop/ui/favorite/bloc/favorite_bloc.dart';
-import 'package:online_shop/ui/widgets/loading_state.dart';
+import '../../data/repo/local/favorite_product_local_repository.dart';
+import '../favorite/bloc/favorite_bloc.dart';
+import 'loading_state.dart';
 
 import '../../common/utils.dart';
 import '../../data/entity/product_entity.dart';

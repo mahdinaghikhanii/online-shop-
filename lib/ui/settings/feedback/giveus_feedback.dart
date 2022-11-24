@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:online_shop/data/repo/remote/giveus_feedback_repository.dart';
-import 'package:online_shop/ui/settings/feedback/bloc/giveus_feedback_bloc.dart';
-import 'package:online_shop/ui/widgets/image_local.dart';
-import 'package:online_shop/ui/widgets/loading_state.dart';
-import 'package:online_shop/ui/widgets/text_input.dart';
+import '../../../data/repo/remote/giveus_feedback_repository.dart';
+import 'bloc/giveus_feedback_bloc.dart';
+import '../../widgets/image_local.dart';
+import '../../widgets/loading_state.dart';
+import '../../widgets/text_input.dart';
 
 TextEditingController _usernameContoroller = TextEditingController();
 TextEditingController _subjectContoroller = TextEditingController();

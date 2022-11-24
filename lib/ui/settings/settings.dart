@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:online_shop/ui/favorite/favorite.dart';
-import 'package:online_shop/ui/settings/feedback/giveus_feedback.dart';
+import '../favorite/favorite.dart';
+import 'feedback/giveus_feedback.dart';
 
 import '../../data/repo/remote/auth_repository.dart';
 
